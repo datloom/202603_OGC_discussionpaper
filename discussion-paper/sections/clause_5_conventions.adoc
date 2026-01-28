@@ -1,0 +1,15 @@
+:sectnums:
+== Conventions
+
+=== Abbreviated terms
+|===
+|GFM | Geospatial Foundation Model
+|VLM | Vision Language Model
+|===
+
+=== Identifiers
+The normative provisions in this document are denoted by the URI
+
+`http://www.opengis.net/spec/{standard}/{m.n}`
+
+All requirements and conformance tests that appear in this document are denoted by partial URIs which are relative to this base.

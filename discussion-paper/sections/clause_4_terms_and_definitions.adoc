@@ -1,0 +1,35 @@
+:sectnums:
+== Terms and definitions
+
+////
+解釈がずれると困る用語を書く。Glossaryという参考用語集を設けることは可能。
+必ず3章に書かなければいけない？
+Note that the initial notice about terms ("This document uses the terms defined in OGC Policy Directive 49...")
+is inserted automatically by Metanorma using the agreed standardised language, and you should not enter it here.
+////
+
+=== Geospatial Foundation Models
+Models trained on EO datasets and aim to capture fundamental geospatial features that can be leveraged for downstream tasks. <<PANGAEA>>
+※point cloudデータで学習されたモデルも含めるように書き換える必要あり
+
+=== benchmark
+Process of evaluating model performance across various tasks. <<PANGAEA>>??
+
+=== downstream task
+The specific task the model infer after pretraining.
+
+=== modality (bands, sensor)
+
+=== single temporal, multi-temporal
+
+=== metric
+All metrics used in this documents follow definitions provided in <<ISO/IEC CD 4213:2025>>.
+
+
+// [.source]
+// <<ISO19101-1>>
+
+// NOTE: An example note.
+
+// [example]
+// Here's an example of an example term.

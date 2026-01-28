@@ -1,0 +1,71 @@
+[obligation=informative]
+:sectnums:
+== Tasks
+【2D & 3D 共通？】 +
+This section describes typical EO downstream tasks used to evaluate GFMs.
+
+=== Pixel-level Task
+|===
+|Task Name |Description |Metric commonly used
+|Semantic segmentation |Semantic segmentation task aims to assign a class label to each pixel in a satellite image. |Jaccard index(IoU), mIoU
+|Scene classification |While semantic segmentation task assigns a label to pixel-level, scene classification task focuses on image-level. |Overall accuracy
+|Object detection |Object detection task aims to identify and localize discrete specific, such as buildings, vehicles and ships. |
+|Change detection |Change detection task identifies differences at pixel-level using time-series images. This task is used for monitoring land use changes and disaster impacts. |Jaccard index(IoU), mIoU
+|Regression |Regression tasks estimate continuous variables from satellite imagery, such as biomass, surface temperature, or elevation. |RMSE
+|===
+
+=== Vision-Language
+|===
+|Task Name |Description |Metric commonly used
+|===
+
+// ==== Metrics
+// * *IoU*: the ratio between the intersection and the union of predicted and reference regions for each class.
+// * *mIoU*: the average IoU across all classes.
+// * *Overall accuracy*: the proportion of correctly classified samples over the total number of samples.
+// * * F1-score*:
+// * *RMSE*: Root Mean Square Error(ISO/IEC CD 4213:2025)
+
+== 2D
+
+=== Evaluation Process for Pixel-level Task
+==== Evaluation Scope
+* clarify the objectives of the experiments (ex. score, inference time, robustness across modalities)
+* select baseline model
+
+==== Dataset Selection
+First, evluator needs to select a dataset or datasets to be used according to the following criteria.
+* downstream task
+* temporality
+* modality
+
+==== Data Preprocessing
+Cropping, resizing, normalization, augmentation
+
+==== Model Adaptation
+Model adaptation defines how to adjust GFMs to assess its performance on downstream tasks.
+* Encoder: freeze / fine-tuning
+* Decoder: plug UPerNet / Linear Layer
+* Modality handling
+* Temporality handling
+
+==== Training & Inference
+Hyperparameter setting should be standardized when conmaring performance between models.
+
+==== Evaluating
+Assess model performance against the objectives defined in Evaluation Scope section.
+
+
+=== Evaluation Process for Vision-Language Taks
+==== Evaluation Scope
+==== Dataset Selection
+
+==== Data Preprocessing
+
+==== Prompt Design
+
+==== Training & Inference
+
+==== Evaluating
+
+== 3D
