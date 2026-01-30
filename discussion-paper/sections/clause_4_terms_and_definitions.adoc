@@ -4,12 +4,15 @@
 ////
 解釈がずれると困る用語を書く。Glossaryという参考用語集を設けることは可能。
 必ず3章に書かなければいけない？
+標準化として定義された単語でなければならない（論文から引用するのはダメ）。このサイトから検索できる https://www.iso.org/obp/ui/
 Note that the initial notice about terms ("This document uses the terms defined in OGC Policy Directive 49...")
 is inserted automatically by Metanorma using the agreed standardised language, and you should not enter it here.
 ////
 
 === Geospatial Foundation Models
-Models trained on EO datasets and aim to capture fundamental geospatial features that can be leveraged for downstream tasks. <<PANGAEA>>
+"Geospatial Foundation Models" refer to large-scale, self-supervised pre-trained deep learning models specifically designed to process and analyze geospatial data. 
+Instead of targeting specific tasks and datasets, GFMs should aim to support a wide array of downstream applications by training on large amounts of data and leveraging 
+their learned representations to generalize across various domains. <<PANGAEA>>
 ※point cloudデータで学習されたモデルも含めるように書き換える必要あり
 
 === benchmark

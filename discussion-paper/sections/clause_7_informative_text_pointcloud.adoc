@@ -1,0 +1,10 @@
+[obligation=informative]
+:sectnums:
+== Evaluation of GFMs 3D Point Cloud
+=== 3D Point Cloud Evaluation
+=== GFMs for 3D point Cloud 
+=== 3D Point Cloud
+==== FM for 3D Point cCoud
+==== Datasets, Tasks, Metrics
+==== Challenges and Future Directions
+

@@ -1,0 +1,57 @@
+[obligation=informative]
+:sectnums:
+== Evaluation of GFMs for Satellite Imagery 
+=== GFMs for Satellite Imagery 
+=== Datasets, Tasks, Metrics
+*Tasks* +
+This section describes typical EO downstream tasks used to evaluate GFMs. +
+We focu on only pixce-level tasks, not including vision-language tasks such as Caption Generation or Counting.
+|===
+|Task Name |Description 
+|Semantic segmentation |Semantic segmentation task aims to assign a class label to each pixel in a satellite image.
+|Scene classification |While semantic segmentation task assigns a label to pixel-level, scene classification task focuses on image-level.
+|Object detection |Object detection task aims to identify and localize discrete specific, such as buildings, vehicles and ships.
+|Change detection |Change detection task identifies differences at pixel-level using time-series images. This task is used for monitoring land use changes and disaster impacts.
+|Regression |Regression tasks estimate continuous variables from satellite imagery, such as biomass, surface temperature, or elevation. 
+|===
+
+*Metrics* +
+|===
+|Metric Name |Description |Task Commonly Used
+|Jaccard index(IoU) |the ratio between the intersection and the union of predicted and reference regions for each class. |Semantic segmentatio, Change detection
+|mIoU |the average IoU across all classes. |Semantic segmentatio, Change detection
+|Overall Accuracy |The proportion of correctly classified samples over the total number of samples. |Scene classification
+|RMSE |Root Mean Square Error(ISO/IEC CD 4213:2025) |Regression
+|F1-score | |
+|===
+
+=== Evaluation Process
+*Evaluation Scope* +
+* clarify the objectives of the experiments (ex. score, inference time, robustness across modalities)
+* select baseline model
+
+*Dataset Selection* +
+First, evluator needs to select a dataset or datasets to be used according to the following criteria.
+* downstream task
+* temporality
+* modality
+
+*Data Preprocessing* +
+Cropping, resizing, normalization, augmentation
+
+*Model Adaptation* +
+Model adaptation defines how to adjust GFMs to assess its performance on downstream tasks.
+* Encoder: freeze / fine-tuning
+* Decoder: plug UPerNet / Linear Layer
+* Modality handling
+* Temporality handling
+
+*Training & Inference* +
+Hyperparameter setting should be standardized when conmaring performance between models.
+
+*Evaluating* +
+Assess model performance against the objectives defined in Evaluation Scope section.
+
+=== Challenges and Future Directions
+
+
