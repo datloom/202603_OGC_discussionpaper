@@ -5,6 +5,7 @@
 |===
 |GFM | Geospatial Foundation Model
 |VLM | Vision Language Model
+|EO |Earth Observation
 |===
 
 === Identifiers

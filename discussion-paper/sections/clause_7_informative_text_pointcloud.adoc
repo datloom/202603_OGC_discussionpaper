@@ -5,6 +5,6 @@
 === GFMs for 3D point Cloud 
 === 3D Point Cloud
 ==== FM for 3D Point cCoud
-==== Datasets, Tasks, Metrics
+==== Tasks, Metrics, Datasets
 ==== Challenges and Future Directions
 

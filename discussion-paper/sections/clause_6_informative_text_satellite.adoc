@@ -1,55 +1,93 @@
 [obligation=informative]
 :sectnums:
 == Evaluation of GFMs for Satellite Imagery 
+The most common method to evaluate performance of GFM is to use downstream task. +
+This section introduces representative examples of models, tasks, metrics, dataset and the evaluation steps.
+
 === GFMs for Satellite Imagery 
-=== Datasets, Tasks, Metrics
+=== Tasks, Metrics, Datasets
 *Tasks* +
 This section describes typical EO downstream tasks used to evaluate GFMs. +
-We focu on only pixce-level tasks, not including vision-language tasks such as Caption Generation or Counting.
+We focus on only pixce-level tasks, not including vision-language tasks such as Caption Generation or Counting.
 |===
 |Task Name |Description 
 |Semantic segmentation |Semantic segmentation task aims to assign a class label to each pixel in a satellite image.
-|Scene classification |While semantic segmentation task assigns a label to pixel-level, scene classification task focuses on image-level.
-|Object detection |Object detection task aims to identify and localize discrete specific, such as buildings, vehicles and ships.
+|Instance Segmentation |...
 |Change detection |Change detection task identifies differences at pixel-level using time-series images. This task is used for monitoring land use changes and disaster impacts.
 |Regression |Regression tasks estimate continuous variables from satellite imagery, such as biomass, surface temperature, or elevation. 
+|Scene classification |While semantic segmentation task assigns a label to pixel-level, scene classification task focuses on image-level.
+|Object detection |Object detection task aims to identify and localize discrete specific, such as buildings, vehicles and ships.
 |===
+
+// Scene classification: 画像のクラスラベル
+// Object Detection: 個々の物体（クラス + 位置（BBox））
 
 *Metrics* +
 |===
 |Metric Name |Description |Task Commonly Used
-|Jaccard index(IoU) |the ratio between the intersection and the union of predicted and reference regions for each class. |Semantic segmentatio, Change detection
+|Jaccard index(IoU) |the ratio between the intersection and the union of predicted and reference regions for each class. |Semantic segmentation, Change detection
 |mIoU |the average IoU across all classes. |Semantic segmentatio, Change detection
+|mAP |Mean Average Precision |Object detection
 |Overall Accuracy |The proportion of correctly classified samples over the total number of samples. |Scene classification
 |RMSE |Root Mean Square Error(ISO/IEC CD 4213:2025) |Regression
 |F1-score | |
 |===
 
-=== Evaluation Process
-*Evaluation Scope* +
-* clarify the objectives of the experiments (ex. score, inference time, robustness across modalities)
-* select baseline model
+*Datasets* +
+This section introduces some popular datasets to evaluate downstream tasks.
+|===
+|Datasets Name |Task to evaluate |Modalities |GSD |Benchmark using this dataset |Reference
+|SpaceNet7 |Semantic segmentation, Change detection |Planet |3m |<<PANGAEA>>, <<GEO-Bench-2>> |<<SpaceNet>>
+|BioMassters |Regression |Sentinel-1, Sentinel-2 |10m |<<PANGAEA>>, <<GEO-Bench-2>> |<<BioMassters>>
+|So2Sat |Scene classification |Sentinel-1, Sentinel-2 |10m |<<GEO-Bench>>, <<GEO-Bench-2>> |<<So2Sat>>
+|EverWatch |Object detection |Aerial RGB |0.1m |<<GEO-Bench-2>> |<<EverWatch>>
+|===
 
-*Dataset Selection* +
-First, evluator needs to select a dataset or datasets to be used according to the following criteria.
-* downstream task
+=== Evaluation Process
+==== Evaluation Scope
+First, evaluator needs to determine the purpose of the experiments and scope. +
+For example:
+
+* clarify the objectives of the experiments and which performance criteria is most appropriate (ex. evaluatescore, inference time, robustness across modalities)
+* select baseline model to compare performance
+
+==== Dataset Selection
+Second step is to select a dataset or datasets for downstream. +
+Based on the objective and scope, the evaluator can choose from perspectives such as the following:
+
+* task
 * temporality
 * modality
 
-*Data Preprocessing* +
-Cropping, resizing, normalization, augmentation
+==== Data Adaptation
+When image size or data distribution is different between pretrain dataset and downstream dataset, cropping, resizing and normalization are needed. +
+If downstream dataset are scarce or lack diversity, data augmentation is importance as it helps improve generalization.
 
-*Model Adaptation* +
+==== Model Adaptation
 Model adaptation defines how to adjust GFMs to assess its performance on downstream tasks.
+*Fine-tuning strategy* +
+The evaluator needs to select a method to adapt a foundation model for downstream task such as:
+
 * Encoder: freeze / fine-tuning
 * Decoder: plug UPerNet / Linear Layer
-* Modality handling
-* Temporality handling
 
-*Training & Inference* +
-Hyperparameter setting should be standardized when conmaring performance between models.
+*Modality handling* +
 
-*Evaluating* +
+
+*Temporality handling* +
+
+==== Training & Inference
+For a fair comparison, the model shoud be fine-tuned with an identical set of hyperparameters.
+For example:
+
+* number of epochs
+* learning rate
+* batch size
+* weight decay
+
+Using these setting, the model is trained and subsequently used for inference.
+
+==== Evaluating
 Assess model performance against the objectives defined in Evaluation Scope section.
 
 === Challenges and Future Directions
