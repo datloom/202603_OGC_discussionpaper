@@ -1,6 +1,7 @@
 [obligation=informative]
 :sectnums:
 == Evaluation of GFMs for Satellite Imagery 
+// Overviewとかの方がいい？
 The most common method to evaluate performance of GFM is to use downstream task. +
 This section introduces representative examples of models, tasks, metrics, dataset and the evaluation steps.
 
@@ -71,7 +72,7 @@ Based on the objective and scope, the evaluator can choose from perspectives suc
 
 ==== Data Adaptation
 When image size or data distribution is different between pretrain dataset and downstream dataset, cropping, resizing and normalization are needed. +
-If downstream dataset are scarce or lack diversity, data augmentation is importance as it helps improve generalization.
+If downstream dataset are scarce or lack diversity, data augmentation is important as it helps improve generalization.
 
 ==== Model Adaptation
 Model adaptation defines how to adjust GFMs to assess its performance on downstream tasks.
@@ -102,6 +103,19 @@ Using these setting, the model is trained and subsequently used for inference.
 Assess model performance against the objectives.
 
 === Challenges and Future Directions
-* マルチモーダル対応のモデルがまだ少ない、vision特化、
-* 雲などのない綺麗なデータセットで学習されることが多い、現実世界でどれだけ使えそうかは不明
-* hyperspectralに対応しているモデルが少ない
+// * マルチモーダル対応のモデルがまだ少ない、vision特化、
+// * 雲などのない綺麗なデータセットで学習されることが多い、現実世界でどれだけ使えそうかは不明
+// * hyperspectralに対応しているモデルが少ない
+// * 地域差・ドメイン差により 汎化性能が低下 (→階層的な RS データ評価体系の構築 )
+// * 透明性・説明可能性・検証可能性が不足、ブラックボックス化(→信頼性指標（安定性・公平性・頑健性）の標準化)
+// * High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される
+
+// このように様々なdatasetやモデル、ベンチマークが登場してきており（個数数えている論文あれば）、satellite imagenary分野のGFMに対する研究は活発になってきている。
+// 一方で課題もある。
+// * 地域差・ドメイン差により 汎化性能が低下 (→階層的な RS データ評価体系の構築 )
+// * 透明性・説明可能性・検証可能性が不足、ブラックボックス化(→信頼性指標（安定性・公平性・頑健性）の標準化)
+// * High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される
+// （参考文献も）
+
+As introduced, studies on GFMs for satellite imagery is thriving. However some limitations have been mentioned. +
+First, GFMs lack of local generalization and domain generalization.
