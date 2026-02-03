@@ -4,19 +4,27 @@
 The most common method to evaluate performance of GFM is to use downstream task. +
 This section introduces representative examples of models, tasks, metrics, dataset and the evaluation steps.
 
-=== GFMs for Satellite Imagery 
-=== Tasks, Metrics, Datasets
+=== Models, Tasks, Metrics, Datasets
+*Models* +
+This section introduces representative GFMs.
+|===
+|Model Name |Backborn |Training Methods
+|<<TerraMind>> |Transformer-based |
+|<<Prithvi-EO-2.0>> |ViT |Masked Image Modeling
+|<<AnySat>> |ViT |Contrastive Learning
+|===
+
 *Tasks* +
 This section describes typical EO downstream tasks used to evaluate GFMs. +
-We focus on only pixce-level tasks, not including vision-language tasks such as Caption Generation or Counting.
+We do not include vision-language tasks such as Caption Generation or Counting.
 |===
 |Task Name |Description 
-|Semantic segmentation |Semantic segmentation task aims to assign a class label to each pixel in a satellite image.
+|Semantic Segmentation |Semantic segmentation task aims to assign a class label to each pixel in a satellite image.
 |Instance Segmentation |...
-|Change detection |Change detection task identifies differences at pixel-level using time-series images. This task is used for monitoring land use changes and disaster impacts.
+|Change Detection |Change detection task identifies differences at pixel-level using time-series images. This task is used for monitoring land use changes and disaster impacts.
 |Regression |Regression tasks estimate continuous variables from satellite imagery, such as biomass, surface temperature, or elevation. 
-|Scene classification |While semantic segmentation task assigns a label to pixel-level, scene classification task focuses on image-level.
-|Object detection |Object detection task aims to identify and localize discrete specific, such as buildings, vehicles and ships.
+|Scene Classification |While semantic segmentation task assigns a label to pixel-level, scene classification task focuses on image-level.
+|Object Detection |Object detection task aims to identify and localize discrete specific, such as buildings, vehicles and ships.
 |===
 
 // Scene classification: 画像のクラスラベル
@@ -26,21 +34,23 @@ We focus on only pixce-level tasks, not including vision-language tasks such as 
 |===
 |Metric Name |Description |Task Commonly Used
 |Jaccard index(IoU) |the ratio between the intersection and the union of predicted and reference regions for each class. |Semantic segmentation, Change detection
+|Precision | |Change Detection
+|Recall | |Change Detection
+|F1 | |Change Detection
 |mIoU |the average IoU across all classes. |Semantic segmentatio, Change detection
 |mAP |Mean Average Precision |Object detection
 |Overall Accuracy |The proportion of correctly classified samples over the total number of samples. |Scene classification
 |RMSE |Root Mean Square Error(ISO/IEC CD 4213:2025) |Regression
-|F1-score | |
 |===
 
 *Datasets* +
 This section introduces some popular datasets to evaluate downstream tasks.
 |===
-|Datasets Name |Task to evaluate |Modalities |GSD |Benchmark using this dataset |Reference
-|SpaceNet7 |Semantic segmentation, Change detection |Planet |3m |<<PANGAEA>>, <<GEO-Bench-2>> |<<SpaceNet>>
-|BioMassters |Regression |Sentinel-1, Sentinel-2 |10m |<<PANGAEA>>, <<GEO-Bench-2>> |<<BioMassters>>
-|So2Sat |Scene classification |Sentinel-1, Sentinel-2 |10m |<<GEO-Bench>>, <<GEO-Bench-2>> |<<So2Sat>>
-|EverWatch |Object detection |Aerial RGB |0.1m |<<GEO-Bench-2>> |<<EverWatch>>
+|Datasets Name |Task to evaluate |Modalities |GSD |Benchmark using this dataset
+|<<SpaceNet7>> |Semantic segmentation, Change detection |Planet |3m |<<PANGAEA>>, <<GEO-Bench-2>>
+|<<BioMassters>> |Regression |Sentinel-1, Sentinel-2 |10m |<<PANGAEA>>, <<GEO-Bench-2>>
+|<<So2Sat>> |Scene classification |Sentinel-1, Sentinel-2 |10m |<<GEO-Bench>>, <<GEO-Bench-2>>
+|<<EverWatch>> |Object detection |Aerial RGB |0.1m |<<GEO-Bench-2>>
 |===
 
 === Evaluation Process
@@ -48,7 +58,7 @@ This section introduces some popular datasets to evaluate downstream tasks.
 First, evaluator needs to determine the purpose of the experiments and scope. +
 For example:
 
-* clarify the objectives of the experiments and which performance criteria is most appropriate (ex. evaluatescore, inference time, robustness across modalities)
+* clarify the objectives of the experiments and which performance criteria is most appropriate (ex. evaluate score, inference time, robustness across modalities)
 * select baseline model to compare performance
 
 ==== Dataset Selection
@@ -65,6 +75,7 @@ If downstream dataset are scarce or lack diversity, data augmentation is importa
 
 ==== Model Adaptation
 Model adaptation defines how to adjust GFMs to assess its performance on downstream tasks.
+
 *Fine-tuning strategy* +
 The evaluator needs to select a method to adapt a foundation model for downstream task such as:
 
@@ -88,8 +99,9 @@ For example:
 Using these setting, the model is trained and subsequently used for inference.
 
 ==== Evaluating
-Assess model performance against the objectives defined in Evaluation Scope section.
+Assess model performance against the objectives.
 
 === Challenges and Future Directions
-
-
+* マルチモーダル対応のモデルがまだ少ない、vision特化、
+* 雲などのない綺麗なデータセットで学習されることが多い、現実世界でどれだけ使えそうかは不明
+* hyperspectralに対応しているモデルが少ない
