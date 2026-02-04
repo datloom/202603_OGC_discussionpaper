@@ -109,6 +109,7 @@ Assess model performance against the objectives.
 // * 地域差・ドメイン差により 汎化性能が低下 (→階層的な RS データ評価体系の構築 )
 // * 透明性・説明可能性・検証可能性が不足、ブラックボックス化(→信頼性指標（安定性・公平性・頑健性）の標準化)
 // * High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される
+* 計算コスト（でもfoundation modelの学習のことだからなあ）
 
 // このように様々なdatasetやモデル、ベンチマークが登場してきており（個数数えている論文あれば）、satellite imagenary分野のGFMに対する研究は活発になってきている。
 // 一方で課題もある。
@@ -117,5 +118,12 @@ Assess model performance against the objectives.
 // * High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される
 // （参考文献も）
 
-As introduced, studies on GFMs for satellite imagery is thriving. However some limitations have been mentioned. +
-First, GFMs lack of local generalization and domain generalization.
+As introduced, studies on GFMs for satellite imagery are rapidly advancing.
+However, several limitations have been identified.
+First, GFMs still struggle with generalization. EO data are highly heterogeneous because they are collected from different sensors, regions, and time periods. 
+This heterogeneity leads to substantial shifts in data distribution across domains, meaning that the statistical properties of the training data often differ 
+from those of the test data. Such domain shifts make it hard for the model to learn stable features, which lowers its generalization performance.<<Survey>><<Foundation>> +
+Second limitation is interpretability. EO data are used in the areas such as environmental monitoring, climate change assessment, and disaster response, 
+where decisions can have serious societal and ecological impacts. Because of this, these applications require transparency, traceability, robustness.
+However, GFMs still provide limited interpretability. This problem becomes even more significant when they integrate heterogeneous sensor modalities, 
+because the fusion process is complex and the internal reasoning steps are hard to visualize or interpret.<<Survey>><<Foundation>>
