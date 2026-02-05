@@ -3,10 +3,12 @@
 
 === Abbreviated terms
 |===
-|GFM | Geospatial Foundation Model
-|VLM | Vision Language Model
+|GFM |Geospatial Foundation Model
+|VLM |Vision Language Model
 |EO |Earth Observation
 |GSD |Ground Sampling Distance
+|XAI |Explainable AI
+|SAR |Synthetic Aperture Radar
 |===
 
 === Identifiers

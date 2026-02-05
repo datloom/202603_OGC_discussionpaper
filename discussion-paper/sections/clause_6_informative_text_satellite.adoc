@@ -84,7 +84,18 @@ The evaluator needs to select a method to adapt a foundation model for downstrea
 * Decoder: plug UPerNet / Linear Layer
 
 *Modality handling* +
+// GFM は特定のセンサ／バンド構成で事前学習されているが、下流タスクのデータセットとは バンド数・種類が一致しないことが多い。
+// そのためこのステップが必要。
+// PANGEAはband match or zero-padding、GEO-Gench-2はセンサごとに対応を分けている。
 
+This step is specific to the remote sensing domain, because GFMs are pre-trained with specific sensor-band that often differ from the bands available 
+in downstream datasets. +
+One approach suggested in <<PANGAEA>> is to use only overlapping bands and zero-padding missing ones in downstream task.
+(ex. if a model is pre-trained on RGB images and the downstream dataset consists of Sentinel-2 data, we use only the RGB bands from Sentinel-2.) +
+On the other hand, <<GEO-Bench-2>> offers modality-specific handling. For multispectral bands, we map model bands to the dataset bands with the nearest wavelength 
+(ex., if a model pre-trained S2 Band 4, we select the dataset band whose spectral range is closest to the red band). 
+For SAR, if a model cannot process radar data natively, we adapt the input by loading the VV and VH polarization bands into an RGB-like three-channel format 
+(ex., using VV, VH, and VV as the model's R, G, and B channels).
 
 *Temporality handling* +
 
@@ -103,27 +114,32 @@ Using these setting, the model is trained and subsequently used for inference.
 Assess model performance against the objectives.
 
 === Challenges and Future Directions
-// * マルチモーダル対応のモデルがまだ少ない、vision特化、
-// * 雲などのない綺麗なデータセットで学習されることが多い、現実世界でどれだけ使えそうかは不明
-// * hyperspectralに対応しているモデルが少ない
-// * 地域差・ドメイン差により 汎化性能が低下 (→階層的な RS データ評価体系の構築 )
-// * 透明性・説明可能性・検証可能性が不足、ブラックボックス化(→信頼性指標（安定性・公平性・頑健性）の標準化)
-// * High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される
-* 計算コスト（でもfoundation modelの学習のことだからなあ）
+// ①汎化性能ない
+// GFMは汎化性能が不足している。 
+// RSデータは地域・時間・センサなどが異なるとデータ分布が大きく異なる。 
+// 本来その多様性に対応できるようなモデルが必要だが（ex. Europeにも南米にも対応できるモデル、Landsat-8にもSentinel-2にも対応できるモデル）、trainingが偏っており、ドメインシフトが起こってしまうのが現状。 
+// →(1) datasetをセンサ、地域など複数の視点で評価するしくみを確立する（地域レベルではうまく評価できているけど、センサレベルではうまくできていないなど）
+// →(2) Optical ↔ SARなどドメインが異なるもの同士の距離を定量化し、どのデータをどれだけ学習に使うべきかを決める（Data Scheduling）
+// ②ブラックボックス化
+// GFMは環境問題など重要なタスクで利用されているため、信頼性、透明性、説明責任を確保するために、それらの解釈可能性を高めることが不可欠である。
+// →(1)説明可能なAI（XAI）をRS分野でも活用し、モデルの出力を、地理的根拠（どこ）と物理的根拠（なぜその値になる）に結びつけて説明できるようにする
 
-// このように様々なdatasetやモデル、ベンチマークが登場してきており（個数数えている論文あれば）、satellite imagenary分野のGFMに対する研究は活発になってきている。
-// 一方で課題もある。
-// * 地域差・ドメイン差により 汎化性能が低下 (→階層的な RS データ評価体系の構築 )
-// * 透明性・説明可能性・検証可能性が不足、ブラックボックス化(→信頼性指標（安定性・公平性・頑健性）の標準化)
-// * High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される
-// （参考文献も）
+// ③High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される（これは書かなかった）
 
 As introduced, studies on GFMs for satellite imagery are rapidly advancing.
-However, several limitations have been identified.
-First, GFMs still struggle with generalization. EO data are highly heterogeneous because they are collected from different sensors, regions, and time periods. 
+However, a few limitations have been identified.
+*Generalization* +
+First, GFMs still struggle with generalization across domains. EO data are highly heterogeneous because they are collected from different sensors, regions, and temporality. 
 This heterogeneity leads to substantial shifts in data distribution across domains, meaning that the statistical properties of the training data often differ 
-from those of the test data. Such domain shifts make it hard for the model to learn stable features, which lowers its generalization performance.<<Survey>><<Foundation>> +
-Second limitation is interpretability. EO data are used in the areas such as environmental monitoring, climate change assessment, and disaster response, 
-where decisions can have serious societal and ecological impacts. Because of this, these applications require transparency, traceability, robustness.
+from those of the test data. Such domain shifts make it hard for the model to learn stable features, which lowers its generalization performance. +
+One idea to address this issue is to establish hierarchical evaluation frameworks. They assess datasets across multiple aspects (e.g., region, sensor) to reveal where coverage or bias is insufficient. <<Survey>>, <<Foundation>>
+// domains: local, temporal, sensor
+
+*Interpretability* +
+EO data are used in the areas such as environmental monitoring, climate change assessment, and disaster response, where decisions can have serious societal and ecological impacts. 
+Because of this, these applications require transparency, traceability, robustness.
 However, GFMs still provide limited interpretability. This problem becomes even more significant when they integrate heterogeneous sensor modalities, 
-because the fusion process is complex and the internal reasoning steps are hard to visualize or interpret.<<Survey>><<Foundation>>
+because the fusion process is complex and the internal reasoning steps are hard to visualize or interpret. +
+A promising direction for improving interpretability is applying XAI in remote sensing, enabling users to connect model outputs with geospatial evidence 
+(e.g., the specific pixels/regions responsible for the output) and physical evidence (e.g., sensor-measured signals such as reflectance spectra or SAR backscatter).
+<<Survey>>, <<Foundation>>
