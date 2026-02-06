@@ -119,9 +119,9 @@ Common temporal aggregation methods include concatenation, mean pooling, a naive
 temporal-attention modules such as L-TAE suggested by <<Vivien Sainte Fare Garnot, Loic Landrieu>>.
 
 ==== Training & Inference
-・学習にあたって、lr、batch_size,epoch数、weghti decayなどのhyperparameterを設定する必要があります
-・探索を行う場合はフェアな評価のため探索範囲を固定します
-・これらは最大何トライアルまでかを固定し、ばらつきを考慮するためRepeated Testの回数も統一します。
+// ・学習にあたって、lr、batch_size,epoch数、weghti decayなどのhyperparameterを設定する必要があります
+// ・探索を行う場合はフェアな評価のため探索範囲を固定します
+// ・これらは最大何トライアルまでかを固定し、ばらつきを考慮するためRepeated Testの回数も統一します。
 For a fair comparison, the model shoud be fine-tuned with an identical set of hyperparameters such as learning rate, batch size, number of epochs, 
 and weight decay.
 For hyperparameter optimization, the search space and the maximum number of trials should be fixed. +
