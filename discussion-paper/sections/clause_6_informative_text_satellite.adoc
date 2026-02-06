@@ -148,7 +148,8 @@ Assess model performance against the objectives.
 // ③High-resolution RS dataは商用利用しづらい、国家主権、プライバシーにより共有が制限される（これは書かなかった）
 
 As introduced, studies on GFMs for satellite imagery are rapidly advancing.
-However, a few limitations have been identified.
+However, a few limitations have been identified. +
+
 *Generalization* +
 First, GFMs still struggle with generalization across domains. EO data are highly heterogeneous because they are collected from different sensors, regions, and temporality. 
 This heterogeneity leads to substantial shifts in data distribution across domains, meaning that the statistical properties of the training data often differ 
