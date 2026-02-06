@@ -24,6 +24,7 @@ References are to follow the Springer LNCS style, with the exception that option
 * [[[AnySat,AnySat]]], Guillaume Astruc, Nicolas Gonthier, Clement Mallet, Loic Landrieu. AnySat: One Earth Observation Model for Many Resolutions, Scales, and Modalities (2024)
 * [[[Survey, Survey]]], Liling Yang, Ning Chen, Jun Yue, Yidan Liu, Jiayi Ma, Pedram Ghamisi, Antonio Plaza, Leyuan Fang. Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and Challenges (2025)
 * [[[Foundation, Foundation]]], Aoran Xiao, Weihao Xuan, Junjue Wang, Jiaxing Huang, Dacheng Tao, Shijian Lu, Naoto Yokoya. Foundation Models for Remote Sensing and Earth Observation: A Survey (2024)
+* [[["Vivien Sainte Fare Garnot, Loic Landrieu", Vivien Sainte Fare Garnot, Loic Landrieu]]], Lightweight Temporal Self-Attention for Classifying Satellite Image Time Series (2020)
 
 // * [[[Smith81,Identification of Common Molecular Subsequences]]],
 // [5] Patrick Helber, Benjamin Bischke, Andreas Dengel, and Damian Borth. Eurosat: A novel dataset and deep

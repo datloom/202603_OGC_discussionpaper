@@ -37,7 +37,7 @@ We do not include vision-language tasks such as Caption Generation or Counting.
 |Jaccard index(IoU) |the ratio between the intersection and the union of predicted and reference regions for each class. |Semantic segmentation, Change detection
 |Precision | |Change Detection
 |Recall | |Change Detection
-|F1 | |Change Detection
+|F1 | |Change Detection,  Multilabel classification
 |mIoU |the average IoU across all classes. |Semantic segmentatio, Change detection
 |mAP |Mean Average Precision |Object detection
 |Overall Accuracy |The proportion of correctly classified samples over the total number of samples. |Scene classification
@@ -56,32 +56,41 @@ This section introduces some popular datasets to evaluate downstream tasks.
 
 === Evaluation Process
 ==== Evaluation Scope
-First, evaluator needs to determine the purpose of the experiments and scope. +
+First, an evaluator needs to determine the purpose of the experiments and scope. +
 For example:
 
 * clarify the objectives of the experiments and which performance criteria is most appropriate (ex. evaluate score, inference time, robustness across modalities)
 * select baseline model to compare performance
 
 ==== Dataset Selection
-Second step is to select a dataset or datasets for downstream. +
-Based on the objective and scope, the evaluator can choose from perspectives such as the following:
-
-* task
-* temporality
-* modality
+The second step is to select a dataset or datasets for downstream. +
+Based on the objective and scope, the evaluator can choose from perspectives such as task, temporality and modality.
+The temporality and modality between the downstream datasets and models do not need to be perfectly aligned, as this can be handled during model adaptation.
 
 ==== Data Adaptation
 When image size or data distribution is different between pretrain dataset and downstream dataset, cropping, resizing and normalization are needed. +
-If downstream dataset are scarce or lack diversity, data augmentation is important as it helps improve generalization.
+If downstream dataset are scarce or lack diversity, data augmentation include horizontal and vertical flipping is important as it helps 
+improve generalization.
 
 ==== Model Adaptation
-Model adaptation defines how to adjust GFMs to assess its performance on downstream tasks.
+Model adaptation defines how to adjust GFMs to assess its performance on downstram tasks.
 
-*Fine-tuning strategy* +
-The evaluator needs to select a method to adapt a foundation model for downstream task such as:
+*Training strategy* +
+The evaluator needs to select a method to adapt a foundation model for downstream task. +
+The encoder weight can be used either frozen or updated during training. +
+Using frozen weights is a common evaluation protocol in self-supervised learning. 
+However, this approach can be highly dependent on the pre-training task and may fail to encode information important for the downstream task.
+On the other hand, it is reported that fine-tuning often mitigates this issue and frequently yields much higher generalization performance. +
+In practice, <<PANGAEA>> adapts forzen encoder and <<GEO-Bench-2>> uses fine-tuning strategy.
 
-* Encoder: freeze / fine-tuning
-* Decoder: plug UPerNet / Linear Layer
+
+// decoderの扱いはtaskによって異なるケースが多い。
+// ・Classification: linear 
+// ・segmentation and regression: plug UPerNet, UNet decoder
+// ・Object Detection, Instance Segmentation:
+Depending on the task, we attach a task-specific head to the encoder, such as a linear classifier for image classification, 
+a UNet or UPerNet decoder for pixel-wise prediction tasks such as semantic segmentation and regression, 
+or an FPN-based detection head for object detection and instance segmentation.
 
 *Modality handling* +
 // GFM は特定のセンサ／バンド構成で事前学習されているが、下流タスクのデータセットとは バンド数・種類が一致しないことが多い。
@@ -98,15 +107,27 @@ For SAR, if a model cannot process radar data natively, we adapt the input by lo
 (ex., using VV, VH, and VV as the model's R, G, and B channels).
 
 *Temporality handling* +
+// すべてのGFMがtemporalityを扱っている訳ではない。モデルがマルチテンポラルに対応している場合は、加工なしでdownstream datasetを入力する。
+// 対応しておらず、downstream datasetがマルチテンポラルの場合は次元を揃える方法がある。
+// 例えばencoderに1枚ずつ画像を入力し、encoderのoutputをconcatする方法だ。もしくは時系列次元が大きい場合などはoutputを平均したり、L-TAE, linear層を使う方法がある。
+
+Not all GFMs are pre-trained using multi-temporal datasets. +
+If a model natively supports multi-temporal, multi-temporal downstream datasets can be fed directly to the encoder-decoder pipeline.
+However, to enable models that can only handle single images to be trained on multi-temporal datasets, each timestamp is passed independently through 
+the encoder and the output features are aggregated over time before passing decoder.
+Common temporal aggregation methods include concatenation, mean pooling, a naive linear mapping that compresses the temporal dimension, and 
+temporal-attention modules such as L-TAE suggested by <<Vivien Sainte Fare Garnot, Loic Landrieu>>.
 
 ==== Training & Inference
-For a fair comparison, the model shoud be fine-tuned with an identical set of hyperparameters.
-For example:
+・学習にあたって、lr、batch_size,epoch数、weghti decayなどのhyperparameterを設定する必要があります
+・探索を行う場合はフェアな評価のため探索範囲を固定します
+・これらは最大何トライアルまでかを固定し、ばらつきを考慮するためRepeated Testの回数も統一します。
+For a fair comparison, the model shoud be fine-tuned with an identical set of hyperparameters such as learning rate, batch size, number of epochs, 
+and weight decay.
+For hyperparameter optimization, the search space and the maximum number of trials should be fixed. +
+The model is trained using the specified hyperparameter values, and repeated tests are conducted to account for variability in training outcomes. The final performance is then evaluated using the chosen metric across all repeated runs.
 
-* number of epochs
-* learning rate
-* batch size
-* weight decay
+// and the number of repeated runs are standardized to account for variability across random seeds. This consistent setup prevents uneven tuning across models and maintains the reliability of the evaluation.
 
 Using these setting, the model is trained and subsequently used for inference.
 
