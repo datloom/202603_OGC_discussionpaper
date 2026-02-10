@@ -38,4 +38,5 @@ Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and
 Foundation Models for Remote Sensing and Earth Observation: A Survey (2024)
 * [[[LTAE, Vivien Sainte Fare Garnot, Loic Landrieu]]], Vivien Sainte Fare Garnot, Loic Landrieu. 
 Lightweight Temporal Self-Attention for Classifying Satellite Image Time Series (2020)
-* [[[ISO/IEC_4213, ISO/IEC CD 4213:2025]]], Artificial intelligence —- Performance measurement for AI classification, regression, clustering and recommendation tasks
+* [[[ISOIEC_4213, ISO/IEC CD 4213:2025]]], Artificial intelligence -- Performance measurement for AI classification, regression, clustering and recommendation tasks
+* [[[ISO19178-1, ISO 19178-1:2025]]], Geographic information -- Training data markup language for artificial intelligence -- Part 1: Conceptual model
