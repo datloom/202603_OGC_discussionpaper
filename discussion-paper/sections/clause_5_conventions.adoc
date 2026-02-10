@@ -7,8 +7,10 @@
 |VLM |Vision Language Model
 |EO |Earth Observation
 |GSD |Ground Sampling Distance
-|XAI |Explainable AI
-|SAR |Synthetic Aperture Radar
+|MAE |Masked Autoencoders
+|MIM |Masked Image Modeling
+|IoU |Intersection Over Union
+|AP |Average Precision
 |===
 
 === Identifiers
