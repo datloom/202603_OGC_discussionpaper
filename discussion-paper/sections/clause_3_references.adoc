@@ -12,57 +12,30 @@ References are to follow the Springer LNCS style, with the exception that option
 
 [bibliography]
 == Bibliography
-* [[[PANGAEA,PANGAEA]]], Valerio Marsocci, Yuru Jia, Georges Le Bellier, David Kerekes, Liang Zeng, Sebastian Hafner, Sebastian Gerard, Eric Brune, Ritu Yadav, Ali Shibli, et al. Pangaea: A global and inclusive benchmark for geospatial foundation models (2024)
-* [[[GEO-Bench-2,GEO-Bench-2]]], Naomi Simumba, Nils Lehmann, Paolo Fraccaro, Hamed Alemohammad, Geeth De Mel, Salman Khan, Manil Maskey, Nicolas Longepe, Xiao Xiang Zhu, Hannah Kerner, Juan Bernabe-Moreno, Alexander Lacoste. GEO-Bench-2: From Performance to Capability, Rethinking Evaluation in Geospatial AI (2025)
-* [[[GEO-Bench,GEO-Bench]]], Alexandre Lacoste, Nils Lehmann, Pau Rodriguez, Evan David Sherwin, Hannah Kerner, Björn Lütjens, Jeremy Andrew Irvin, David Dao, Hamed Alemohammad, Alexandre Drouin, Mehmet Gunturkun, Gabriel Huang, David Vazquez, Dava Newman, Yoshua Bengio, Stefano Ermon, Xiao Xiang Zhu. GEO-Bench: Toward Foundation Models for Earth Monitoring (2023)
+// [[[引用される際に使われるキーワード, referenceに表示されるキーワード]]
+* [[[PANGAEA,PANGAEA]]], Valerio Marsocci, Yuru Jia, Georges Le Bellier, David Kerekes, Liang Zeng, Sebastian Hafner, Sebastian Gerard, Eric Brune, Ritu Yadav, Ali Shibli, et al. 
+Pangaea: A global and inclusive benchmark for geospatial foundation models (2024)
+* [[[GEO-Bench-2,GEO-Bench-2]]], Naomi Simumba, Nils Lehmann, Paolo Fraccaro, Hamed Alemohammad, Geeth De Mel, Salman Khan, Manil Maskey, Nicolas Longepe, Xiao Xiang Zhu, Hannah Kerner, Juan Bernabe-Moreno, Alexander Lacoste. 
+GEO-Bench-2: From Performance to Capability, Rethinking Evaluation in Geospatial AI (2025)
+* [[[GEO-Bench,GEO-Bench]]], Alexandre Lacoste, Nils Lehmann, Pau Rodriguez, Evan David Sherwin, Hannah Kerner, Björn Lütjens, Jeremy Andrew Irvin, David Dao, Hamed Alemohammad, Alexandre Drouin, Mehmet Gunturkun, Gabriel Huang, David Vazquez, Dava Newman, Yoshua Bengio, Stefano Ermon, Xiao Xiang Zhu. 
+GEO-Bench: Toward Foundation Models for Earth Monitoring (2023)
 * [[[SpaceNet,SpaceNet]]], Adam Van Etten, Dave Lindenbaum, Todd M. Bacastow. SpaceNet: A Remote Sensing Dataset and Challenge Series (2018)
-* [[[BioMassters,BioMassters]]], Andrea Nascetti, Ritu Yadav, Kirill Brodt, Qixun Qu, Hongwei Fan, Yuri Shendryk, Isha Shah, and Christine Chung. Biomassters: A benchmark dataset for forest biomass estimation using multi-modal satellite time-series (2023)
-* [[[So2Sat,So2Sat]]], Xiao Xiang Zhu, Senior Member, IEEE, Jingliang Hu, Chunping Qiu, Yilei Shi, Jian Kang, Lichao Mou, Hossein Bagheri, Matthias Haberle, Yuansheng Hua, Rong Huang, Lloyd Hughes, Hao Li, Yao Sun, ¨Guichen Zhang, Shiyao Han, Michael Schmitt, Senior Member, IEEE, and Yuanyuan Wang, Member, IEEE. So2Sat LCZ42: A Benchmark Dataset for Global Local Climate Zones Classification (2019)
-* [[[EverWatch,EverWatch]]], Lindsey Garner, Ben Weinstein, Michael Rickershauser, Melissa Baldino, Holly Coates, Mary Commins, Tracey Faber, Jonah Gula, Shayly Van Ert, Peter Frederick, Ethan White, and S.K. Morgan Ernest. Everwatch benchmark: training and evaluation data for detection and species classification of everglades wading birds from airborne imagery (2024)
-* [[[TerraMind,TerraMind]]], Johannes Jakubik, Felix Yang, Benedikt Blumenstiel, Erik Scheurer, Rocco Sedona, Stefano Maurogiovanni, Jente Bosmans, Nikolaos Dionelis, Valerio Marsocci, Niklas Kopp, Rahul Ramachandran, Paolo Fraccaro, Thomas Brunschwiler, Gabriele Cavallaro, Juan Bernabe-Moreno, Nicolas Longépé. TerraMind: Large-Scale Generative Multimodality for Earth Observation (2025)
-* [[[Prithvi-EO-2.0,Prithvi-EO-2.0]]], Daniela Szwarcman, Sujit Roy, Paolo Fraccaro, Þorsteinn Elí Gíslason, Benedikt Blumenstiel, Rinki Ghosal, Pedro Henrique de Oliveira, Joao Lucas de Sousa Almeida, Rocco Sedona, Yanghui Kang, Srija Chakraborty, Sizhe Wang, Carlos Gomes, Ankur Kumar, Myscon Truong, Denys Godwin, Hyunho Lee, Chia-Yu Hsu, Ata Akbari Asanjan, Besart Mujeci, Disha Shidham, Trevor Keenan, Paulo Arevalo, Wenwen Li, Hamed Alemohammad, Pontus Olofsson, Christopher Hain, Robert Kennedy, Bianca Zadrozny, David Bell, Gabriele Cavallaro, Campbell Watson, Manil Maskey, Rahul Ramachandran, Juan Bernabe Moreno. Prithvi-EO-2.0: A Versatile Multi-Temporal Foundation Model for Earth Observation Applications (2024)
-* [[[AnySat,AnySat]]], Guillaume Astruc, Nicolas Gonthier, Clement Mallet, Loic Landrieu. AnySat: One Earth Observation Model for Many Resolutions, Scales, and Modalities (2024)
-
-
-// * [[[Smith81,Identification of Common Molecular Subsequences]]],
-// [5] Patrick Helber, Benjamin Bischke, Andreas Dengel, and Damian Borth. Eurosat: A novel dataset and deep
-// learning benchmark for land use and land cover classification. IEEE Journal of Selected Topics in Applied Earth
-// Observations and Remote Sensing, 12(7):2217–2226, 2019. 1, 4
-
-// * [[[May06,ZIB Structure Prediction Pipeline]]],
-// _ZIB Structure Prediction Pipeline: Composing a Complex Biological Workflow through Web Services_.
-// May, P., Ehrlich, H.C., Steinke, T. In: Nagel, W.E., Walter,
-// W.V., Lehner, W. (eds.) Euro-Par 2006. LNCS, vol. 4128, pp. 1148–1158. Springer,
-// Heidelberg (2006)
-
-// * [[[Grid,The Grid]]], _The Grid: Blueprint for a New Computing Infrastructure._,
-// Foster, I., Kesselman, C.. Morgan Kaufmann, San Francisco (1999).
-
-// * [[[Czajkowski01,Grid Information Services for Distributed Resource Sharing]]],
-// _Grid Information Services for Distributed Resource Sharing._
-// Czajkowski, K., Fitzgerald, S., Foster, I., Kesselman, C. In: 10th IEEE International Symposium on High
-// Performance Distributed Computing, pp. 181–184. IEEE Press, New York (2001)
-
-// * [[[Foster02,The Physiology of the Grid]]],
-// _The Physiology of the Grid: an Open Grid Services Architecture for Distributed Systems Integration._
-// Foster, I., Kesselman, C., Nick, J., Tuecke, S. Technical report, Global Grid Forum (2002)
-
-// * [[[NCBI,NCBI]]], _National Center for Biotechnology Information_, http://www.ncbi.nlm.nih.gov
-
-// * [[[ISO19101-1,ISO 19101-1:2014]]], Geographic information -- Reference model -- Part 1: Fundamentals
-
-// * [[[ISO19115-1,ISO 19115-1:2014]]], _Geographic information -- Metadata -- Part 1: Fundamentals_
-
-// * [[[ISO19157,ISO 19157:2013]]], _Geographic information -- Data quality_
-
-// * [[[ISO19139,ISO 19139:2007]]], _Geographic information -- Metadata -- XML schema implementation_
-
-// * [[[ISO19115-3,ISO 19115-3]]], _Geographic information -- Metadata -- Part 3: XML schemas_ (2016)
-
-// * [[[OGC15-097,OGC 15-097]]], _OGC Geospatial User Feedback Standard: Conceptual Model_ (2016)
-
-// * [[[OGC12-019,OGC 12-019]]], _OGC City Geography Markup Language (CityGML) Encoding Standard_ (2012)
-
-// * [[[OGC14-005r3,OGC 14-005r3]]], _OGC IndoorGML_ (2014)
-
-// * [[[OGC06-121r9,OGC 06-121r9]]], _OGC Web Service Common Implementation Specification_, April 7, 2010. http://portal.opengeospatial.org/files/?artifact_id=38867
+* [[[BioMassters,BioMassters]]], Andrea Nascetti, Ritu Yadav, Kirill Brodt, Qixun Qu, Hongwei Fan, Yuri Shendryk, Isha Shah, and Christine Chung. 
+Biomassters: A benchmark dataset for forest biomass estimation using multi-modal satellite time-series (2023)
+* [[[So2Sat,So2Sat]]], Xiao Xiang Zhu, Senior Member, IEEE, Jingliang Hu, Chunping Qiu, Yilei Shi, Jian Kang, Lichao Mou, Hossein Bagheri, Matthias Haberle, Yuansheng Hua, Rong Huang, Lloyd Hughes, Hao Li, Yao Sun, ¨Guichen Zhang, Shiyao Han, Michael Schmitt, Senior Member, IEEE, and Yuanyuan Wang, Member, IEEE. 
+So2Sat LCZ42: A Benchmark Dataset for Global Local Climate Zones Classification (2019)
+* [[[EverWatch,EverWatch]]], Lindsey Garner, Ben Weinstein, Michael Rickershauser, Melissa Baldino, Holly Coates, Mary Commins, Tracey Faber, Jonah Gula, Shayly Van Ert, Peter Frederick, Ethan White, and S.K. Morgan Ernest. 
+Everwatch benchmark: training and evaluation data for detection and species classification of everglades wading birds from airborne imagery (2024)
+* [[[THOR,THOR]]], Theodor Forgaard, Jarle H. Reksten, Anders U. Waldeland, Valerio Marsocci, Nicolas Longépé, Michael Kampffmeyer, Arnt-Børre Salberg. 
+THOR: A Versatile Foundation Model for Earth Observation Climate and Society Applications (2026)
+* [[[Prithvi-EO-2.0,Prithvi-EO-2.0]]], Daniela Szwarcman, Sujit Roy, Paolo Fraccaro, Þorsteinn Elí Gíslason, Benedikt Blumenstiel, Rinki Ghosal, Pedro Henrique de Oliveira, Joao Lucas de Sousa Almeida, Rocco Sedona, Yanghui Kang, Srija Chakraborty, Sizhe Wang, Carlos Gomes, Ankur Kumar, Myscon Truong, Denys Godwin, Hyunho Lee, Chia-Yu Hsu, Ata Akbari Asanjan, Besart Mujeci, Disha Shidham, Trevor Keenan, Paulo Arevalo, Wenwen Li, Hamed Alemohammad, Pontus Olofsson, Christopher Hain, Robert Kennedy, Bianca Zadrozny, David Bell, Gabriele Cavallaro, Campbell Watson, Manil Maskey, Rahul Ramachandran, Juan Bernabe Moreno. 
+Prithvi-EO-2.0: A Versatile Multi-Temporal Foundation Model for Earth Observation Applications (2024)
+* [[[DOFA,DOFA]]], Zhitong Xiong, Yi Wang, Fahong Zhang, Adam J. Stewart, Joëlle Hanna, Damian Borth, Ioannis Papoutsis, Bertrand Le Saux, Gustau Camps-Valls, Xiao Xiang Zhu. 
+Neural Plasticity-Inspired Multimodal Foundation Model for Earth Observation (2024)
+* [[[Survey, Survey]]], Liling Yang, Ning Chen, Jun Yue, Yidan Liu, Jiayi Ma, Pedram Ghamisi, Antonio Plaza, Leyuan Fang. 
+Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and Challenges (2025)
+* [[[Foundation, Foundation]]], Aoran Xiao, Weihao Xuan, Junjue Wang, Jiaxing Huang, Dacheng Tao, Shijian Lu, Naoto Yokoya. 
+Foundation Models for Remote Sensing and Earth Observation: A Survey (2024)
+* [[[LTAE, Vivien Sainte Fare Garnot, Loic Landrieu]]], Vivien Sainte Fare Garnot, Loic Landrieu. 
+Lightweight Temporal Self-Attention for Classifying Satellite Image Time Series (2020)
+* [[[ISO/IEC_4213, ISO/IEC CD 4213:2025]]], Artificial intelligence —- Performance measurement for AI classification, regression, clustering and recommendation tasks

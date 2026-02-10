@@ -13,6 +13,7 @@ is inserted automatically by Metanorma using the agreed standardised language, a
 "Geospatial Foundation Models" refer to large-scale, self-supervised pre-trained deep learning models specifically designed to process and analyze geospatial data. 
 Instead of targeting specific tasks and datasets, GFMs should aim to support a wide array of downstream applications by training on large amounts of data and leveraging 
 their learned representations to generalize across various domains. <<PANGAEA>>
+Also known as "GeoFMs" or "GeoAI"
 ※point cloudデータで学習されたモデルも含めるように書き換える必要あり
 
 === benchmark

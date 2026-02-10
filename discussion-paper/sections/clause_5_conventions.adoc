@@ -3,10 +3,14 @@
 
 === Abbreviated terms
 |===
-|GFM | Geospatial Foundation Model
-|VLM | Vision Language Model
+|GFM |Geospatial Foundation Model
+|VLM |Vision Language Model
 |EO |Earth Observation
 |GSD |Ground Sampling Distance
+|MAE |Masked Autoencoders
+|MIM |Masked Image Modeling
+|IoU |Intersection Over Union
+|AP |Average Precision
 |===
 
 === Identifiers
