@@ -19,14 +19,24 @@ This section describes representative GFMs released in 2024 or later.
 *_Tasks_* +
 This section describes typical EO downstream tasks used to evaluate GFMs. +
 As mentioned above, we do not include vision-language tasks such as caption generation or counting.
+// |===
+// |Task name |Description 
+// |Semantic segmentation |Semantic segmentation aims to assign a class label to each pixel in a satellite image.
+// |Instance segmentation |The aim of instance segmentation is to detect each object in an image by predicting its category, bounding box and a pixel-level mask.
+// |Change detection |Change detection identifies differences at pixel-level between time-series images. This task is used for monitoring land use changes and disaster impacts.
+// |Regression |Regression estimates continuous variables from satellite imagery, such as forest aboveground biomass, surface temperature or elevation. 
+// |Scene classification |While semantic segmentation assigns a label to pixel-level, scene classification focuses on image-level.
+// |Object detection |Object detection aims to identify and localize objects, such as buildings, vehicles and ships.
+// |===
+
+// ISOを引用した方がこちら↓
 |===
 |Task name |Description 
-|Semantic segmentation |Semantic segmentation aims to assign a class label to each pixel in a satellite image.
-// |Instance segmentation |The aim of instance segmentation is to detect each object in an image by predicting its category, bounding box and a pixel-level mask.
-|Change detection |Change detection identifies differences at pixel-level between time-series images. This task is used for monitoring land use changes and disaster impacts.
-|Regression |Regression estimates continuous variables from satellite imagery, such as forest aboveground biomass, surface temperature or elevation. 
-|Scene classification |While semantic segmentation assigns a label to pixel-level, scene classification focuses on image-level.
-|Object detection |Object detection aims to identify and localize objects, such as buildings, vehicles and ships.
+|Semantic segmentation |task of assigning a class label to each pixel in a satellite image.
+|Change detection |recognition of changes between images acquired at different times. <<ISO19178-1, ISO 19178-1:2025>>
+|Regression |task of estimating continuous variables from satellite imagery, such as forest aboveground biomass, surface temperature or elevation. 
+|Scene classification |task of identifying scene categories of images, on the basis of a training set of images whose scene categories are known. <<ISO19178-1, ISO 19178-1:2025>>
+|Object detection |recognition of objects from images. <<ISO19178-1, ISO 19178-1:2025>>
 |===
 
 // Scene classification: 画像のクラスラベル
