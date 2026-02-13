@@ -2,14 +2,20 @@
 == Terms and definitions
 
 ////
-解釈がずれると困る用語を書く。Glossaryという参考用語集を設けることは可能。
-必ず3章に書かなければいけない？
-標準化として定義された単語でなければならない（論文から引用するのはダメ）。このサイトから検索できる https://www.iso.org/obp/ui/
-基本的なAI用語はこのISO/IECが基準になりそう: https://www.iso.org/obp/ui/#iso:std:iso-iec:22989:ed-1:v1:en:term:3.1.27
+memo
+・解釈がずれると困る用語を書く。Glossaryという参考用語集を設けることは可能。
+・OGC Policy Directive 49で定義されていることはmetanormaで自動的に追加される（文章中では順守すべき）
+・必ず3章に書かなければいけないみたい
+・ISO検索サイト https://www.iso.org/obp/ui/
+・基本的なAI用語はこのISO/IECが基準になりそう: https://www.iso.org/obp/ui/#iso:std:iso-iec:22989:ed-1:v1:en:term:3.1.27
+・地理用語が参考になりそうなISO: https://www.iso.org/obp/ui/#iso:std:iso:19101:-2:ed-1:v1:en:term:3.33
 Note that the initial notice about terms ("This document uses the terms defined in OGC Policy Directive 49...")
 is inserted automatically by Metanorma using the agreed standardised language, and you should not enter it here.
 ////
 
+// ISOの定義を修正
+
+// 論文の定義を引用（できるだけISOの書き方を引用、なければ論文を引用、なければ作成）
 === Geospatial Foundation Models
 models trained on large-scale EO datasets and aim to capture fundamental geospatial features that can be leveraged for downstream tasks 
 
@@ -22,19 +28,29 @@ procedure, problem, or test that can be used to compare systems or components to
 [.source]
 <<ISOIECIEEE_24765, ISO/IEC/IEEE 24765:2017>>
 
-=== multimodal model (bands, sensor)
-machine learning models capable of processing and integrating information from multiple modalities or types of data. These modalities can include text, images, audio, video and other forms of sensory input. 
+=== band
+range of wavelengths of electromagnetic radiation that produce a single response by a sensing device
+
 [.source]
-<<ISOIECIEEE_24765, ISO/IEC/IEEE 24765:2017>>
+<<ISO19101-2, ISO 19101-2:2018>>
 
-In EO domain, they also can include sensors.
+=== multimodal model in EO
+while most multimodal models deal with a combination of texts and images, 
+EO offers many more possibilities: multisource and multispectral imaging, Synthetic Aperture Radar (SAR), vector geodata, ground-level pictures, etc.
 
-=== single temporal, multi-temporal
-
-=== robustness
-ability of a system to maintain its level of performance under any circumstances
 [.source]
-<<ISOIEC_22989, ISO/IEC 22989:2022>>
+<<Cross-sensor>>
+
+=== multitemporal data
+data from the same location captured at different timeframes
+
+[.source]
+<<PANGAEA>>
+
+// === robustness
+// ability of a system to maintain its level of performance under any circumstances
+// [.source]
+// <<ISOIEC_22989, ISO/IEC 22989:2022>>
 
 
 // [.source]
@@ -45,8 +61,19 @@ ability of a system to maintain its level of performance under any circumstances
 // [example]
 // Here's an example of an example term.
 
-[appendix,obligation="informative"]
-[heading='terms and definitions']
-== Glossary
-Landsat, Sentinel
-...
+// [appendix,obligation="informative"]
+// [heading='terms and definitions']
+// == Glossary
+// Landsat, Sentinel
+// ...
+
+=== Abbreviated terms
+|===
+|GFM |Geospatial Foundation Model
+|EO |Earth Observation
+|GSD |Ground Sampling Distance
+|MAE |Masked Autoencoders
+|MIM |Masked Image Modeling
+|IoU |Intersection Over Union
+|AP |Average Precision
+|===
