@@ -12,8 +12,8 @@ This section describes representative GFMs released in 2024 or later.
 |===
 |Model name |Backborn |Training methods |Pretrain images |Description
 |<<THOR>> |transformer-based |Contrastive learning |Sentinel-1, Sentinel-2, Sentinel-3 |First architecture to unify data from Sentinel-1, -2, and -3 (OLCI & SLSTR) satellites using framework that extends the flexible patching to a MAE setup.
-|<<Prithvi-EO-2.0>> |transformer-based |MAE |Landsat 8, 9 and Sentinel-2 |A multi-temporal model trained on global time series data that incorporates temporal and location embeddings, with 600M parameters which is among the largest in the field of EO.
-|<<DOFA>> |transformer-based |MIM |Sentinel-1, Sentinel-2, Gaofen-2, NAIP, EnMAP |A multi-modal model leverages wavelength as a unifying parameter across various EO modalities.
+|<<Prithvi-EO-2.0>> |transformer-based |MAE |Landsat 8, 9 and Sentinel-2 |A multitemporal model trained on global time series data that incorporates temporal and location embeddings, with 600M parameters which is among the largest in the field of EO.
+|<<DOFA>> |transformer-based |MIM |Sentinel-1, Sentinel-2, Gaofen-2, NAIP, EnMAP |A multimodal model leverages wavelength as a unifying parameter across various EO modalities.
 |===
 
 *_Tasks_* +
@@ -142,7 +142,7 @@ The encoder weight can be used either frozen or updated during training. +
 Using frozen weights is a common evaluation protocol in self-supervised learning. 
 However, this approach can be highly dependent on the pre-training task and may fail to encode information important for the downstream task.
 On the other hand, it is reported that fine-tuning often mitigates this issue and frequently demonstrate much higher generalization performance. +
-In practice, <<PANGAEA>> adapts forzen encoder and <<GEO-Bench-2>> uses fine-tuning strategy. 
+In practice, <<PANGAEA>> adapts frozen encoder and <<GEO-Bench-2>> uses fine-tuning strategy. 
 // decoderの扱いはtaskによって異なるケースが多い。
 // ・Classification: linear 
 // ・segmentation and regression: plug UPerNet, UNet decoder
@@ -169,9 +169,9 @@ For SAR, if a model cannot process radar data natively, we adapt the input by lo
 // すべてのGFMがtemporalityを扱っている訳ではない。モデルがマルチテンポラルに対応している場合は、加工なしでdownstream datasetを入力する。
 // 対応しておらず、downstream datasetがマルチテンポラルの場合は次元を揃える方法がある。
 // 例えばencoderに1枚ずつ画像を入力し、encoderのoutputをconcatする方法だ。もしくは時系列次元が大きい場合などはoutputを平均したり、L-TAE, linear層を使う方法がある。
-Not all GFMs are pre-trained using multi-temporal datasets. +
-If a model natively supports multi-temporal, multi-temporal downstream datasets can be fed directly to the encoder-decoder pipeline. 
-However, to enable models that can only handle single images to be trained on multi-temporal datasets, each timestamp is passed independently through 
+Not all GFMs are pre-trained using multitemporal datasets. +
+If a model natively supports multitemporal, multitemporal downstream datasets can be fed directly. 
+However, to enable models that can only handle single images to be trained on multitemporal datasets, each timestamp is passed independently through 
 the encoder and the output features are aggregated over time before passing decoder. 
 Common temporal aggregation methods include concatenation, mean pooling, a naive linear mapping that compresses the temporal dimension and 
 temporal-attention modules such as L-TAE suggested by <<LTAE, Vivien Sainte Fare Garnot and Loic Landrieu>>.
