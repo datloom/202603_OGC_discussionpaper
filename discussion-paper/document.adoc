@@ -55,9 +55,9 @@ include::sections/clause_4_terms_and_definitions.adoc[]
 
 include::sections/clause_5_conventions.adoc[]
 
-include::sections/clause_6_informative_text.adoc[]
+include::sections/clause_6_informative_text_satellite.adoc[]
 
-include::sections/clause_7_normative_text.adoc[]
+include::sections/clause_7_informative_text_pointcloud.adoc[]
 
 ////
 add or remove annexes after "A" as necessary
