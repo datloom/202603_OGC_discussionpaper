@@ -1,10 +1,6 @@
 [bibliography]
 [[Bibliography]]
 == Bibliography
-
-* [[[OGC2015,OGCTB12]]], _OGC: OGC Testbed 12 Annex B: Architecture_ (2015).
-
-
 * [[[PANGAEA,doi:10.48550/arXiv.2412.04204]]]
 * [[[GEO-Bench-2,doi:10.48550/arXiv.2511.15658]]]
 * [[[GEO-Bench,doi:10.48550/arXiv.2306.03831]]]
