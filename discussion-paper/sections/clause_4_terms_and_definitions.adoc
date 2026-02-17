@@ -68,6 +68,7 @@ data from the same location captured at different timeframes
 // ...
 
 === Abbreviated terms
+[%unnumbered]
 |===
 |GFM |Geospatial Foundation Model
 |EO |Earth Observation

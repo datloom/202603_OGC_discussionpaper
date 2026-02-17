@@ -7,19 +7,25 @@ This section introduces representative examples of models, tasks, metrics, datas
 Although research on multimodal models has been growing recently, we only focus vision-only tasks.
 
 === Models, Tasks, Metrics, Datasets
-*_Models_* +
-This section describes representative GFMs released in 2024 or later.
-[caption=]
+This section describes representative models, tasks, metrics and datasets. +
+
+==== Models
+// *_Models_* +
+The following table introduces representative models released in 2024 and later.
+
+// .Representative GFMs
+[%unnumbered]
 |===
 |Model name |Backborn |Training methods |Pretrain images |Description
 
-|<<THOR>> |transformer-based |Contrastive learning |Sentinel-1, Sentinel-2, Sentinel-3 |First architecture to unify data from Sentinel-1, -2, and -3 (OLCI & SLSTR) satellites using framework that extends the flexible patching to a MAE setup.
-|<<Prithvi-EO-2.0>> |transformer-based |MAE |Landsat 8, 9 and Sentinel-2 |A multitemporal model trained on global time series data that incorporates temporal and location embeddings, with 600M parameters which is among the largest in the field of EO.
-|<<DOFA>> |transformer-based |MIM |Sentinel-1, Sentinel-2, Gaofen-2, NAIP, EnMAP |A multimodal model leverages wavelength as a unifying parameter across various EO modalities.
+|<<THOR, THOR>> |transformer-based |Contrastive learning |Sentinel-1, Sentinel-2, Sentinel-3 |First architecture to unify data from Sentinel-1, -2, and -3 (OLCI & SLSTR) satellites using framework that extends the flexible patching to a MAE setup.
+|<<Prithvi-EO-2.0, Prithvi-EO-2.0>> |transformer-based |MAE |Landsat 8, 9 and Sentinel-2 |A multitemporal model trained on global time series data that incorporates temporal and location embeddings, with 600M parameters which is among the largest in the field of EO.
+|<<DOFA, DOFA>> |transformer-based |MIM |Sentinel-1, Sentinel-2, Gaofen-2, NAIP, EnMAP |A multimodal model leverages wavelength as a unifying parameter across various EO modalities.
 |===
 
-*_Tasks_* +
-This section describes typical EO downstream tasks used to evaluate GFMs. +
+==== Tasks
+// *_Tasks_* +
+The following table describes typical EO downstream tasks used to evaluate GFMs. +
 As mentioned above, we do not include vision-language tasks such as caption generation or counting.
 // |===
 // |Task name |Description 
@@ -32,6 +38,8 @@ As mentioned above, we do not include vision-language tasks such as caption gene
 // |===
 
 // ISOを引用した方がこちら↓
+// .Representative tasks
+[%unnumbered]
 |===
 |Task name |Description 
 
@@ -45,8 +53,12 @@ As mentioned above, we do not include vision-language tasks such as caption gene
 // Scene classification: 画像のクラスラベル
 // Object detection: 個々の物体（クラス + 位置（BBox））
 
-*_Metrics_* +
-This section describes metrics and its definition. +
+==== Metrics
+// *_Metrics_* +
+The following table describes representative metrics and its definition.
+
+// .Representative metrics
+[%unnumbered]
 |===
 |Metric name |Description |Task commonly used
 
@@ -102,15 +114,19 @@ This section describes metrics and its definition. +
 // |Regression
 // |===
 
-*_Datasets_* +
-This section describes some popular datasets to evaluate downstream tasks.
+==== Datasets
+// *_Datasets_* +
+The following table describes some popular datasets to evaluate downstream tasks.
+
+// .Representative datasets
+[%unnumbered]
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
 
-|<<SpaceNet>> |Semantic segmentation, Change detection |Planet |<<PANGAEA>>, <<GEO-Bench-2>>
-|<<BioMassters>> |Regression |Sentinel-1, Sentinel-2 |<<PANGAEA>>, <<GEO-Bench-2>>
-|<<So2Sat>> |Scene classification |Sentinel-1, Sentinel-2 |<<GEO-Bench>>, <<GEO-Bench-2>>
-|<<EverWatch>> |Object detection |Aerial RGB |<<GEO-Bench-2>>
+|<<SpaceNet, SpaceNet>> |Semantic segmentation, Change detection |Planet |<<PANGAEA, PANGAEA>>, <<GEO-Bench-2, GEO-Bench-2>>
+|<<BioMassters, BioMassters>> |Regression |Sentinel-1, Sentinel-2 |<<PANGAEA, PANGAEA>>, <<GEO-Bench-2, GEO-Bench-2>>
+|<<So2Sat, So2Sat>> |Scene classification |Sentinel-1, Sentinel-2 |<<GEO-Bench, GEO-Bench>>, <<GEO-Bench-2, GEO-Bench-2>>
+|<<EverWatch, EverWatch>> |Object detection |Aerial RGB |<<GEO-Bench-2, GEO-Bench-2>>
 |===
 // |===
 // |Datasets name |Task to evaluate |Modalities |GSD |Benchmark using this dataset
@@ -147,7 +163,7 @@ The encoder weight can be used either frozen or updated during training. +
 Using frozen weights is a common evaluation protocol in self-supervised learning. 
 However, this approach can be highly dependent on the pre-training task and may fail to encode information important for the downstream task.
 On the other hand, it is reported that fine-tuning often mitigates this issue and frequently demonstrate much higher generalization performance. +
-In practice, <<PANGAEA>> adapts frozen encoder and <<GEO-Bench-2>> uses fine-tuning strategy. 
+In practice, <<PANGAEA, PANGAEA>> adapts frozen encoder and <<GEO-Bench-2, GEO-Bench-2>> uses fine-tuning strategy. 
 // decoderの扱いはtaskによって異なるケースが多い。
 // ・Classification: linear 
 // ・segmentation and regression: plug UPerNet, UNet decoder
@@ -163,9 +179,9 @@ and a FPN-based detection head for object detection.
 // PANGEAはband match or zero-padding、GEO-Gench-2はセンサごとに対応を分けている。
 This step is specific to the remote sensing domain, because GFMs are pre-trained with multiple sensor-band that often differ from the bands available 
 in downstream datasets. +
-One approach suggested in <<PANGAEA>> is to use only overlapping bands and zero-padding missing ones in downstream task 
+One approach suggested in <<PANGAEA, PANGAEA>> is to use only overlapping bands and zero-padding missing ones in downstream task 
 (e.g., if a model is pre-trained on RGB images and the downstream dataset consists of Sentinel-2 image, we use only the RGB bands from Sentinel-2). +
-On the other hand, <<GEO-Bench-2>> offers modality-specific handling. For multispectral bands, it is requested to map model bands to the dataset bands with the nearest wavelength 
+On the other hand, <<GEO-Bench-2, GEO-Bench-2>> offers modality-specific handling. For multispectral bands, it is requested to map model bands to the dataset bands with the nearest wavelength 
 (e.g., if a model pre-trained with only Sentinel-2 Band 4, we select the dataset band whose spectral range is closest to the red band). 
 For SAR, if a model cannot process radar data natively, we adapt the input by loading the VV and VH polarization bands into an RGB-like three-channel format 
 (e.g., using VV, VH, and VV as the model's R, G, and B channels, repeating VV to match the bands size).
@@ -190,7 +206,7 @@ and weight decay.
 For hyperparameter optimization, the search space and the maximum number of trials should be fixed. +
 The models are fine-tuned using the specified hyperparameter values and then evaluted with metrics. It is recomended to repeat the fine-tuning process 
 a few times with multiple random seeds to account for training stochasticity. +
-As evaluation usually conducted with multiple datasets, a methodology for aggregating scores is proposed, which normalize each score, apply bootstrapping, aggregate using the interquartile mean (IQM) and then compute the final averaged score. (<<GEO-Bench-2>>)
+As evaluation usually conducted with multiple datasets, a methodology for aggregating scores is proposed, which normalize each score, apply bootstrapping, aggregate using the interquartile mean (IQM) and then compute the final averaged score. (<<GEO-Bench-2, GEO-Bench-2>>)
 
 === Challenges and future directions
 // ①汎化性能ない
@@ -209,7 +225,7 @@ As evaluation usually conducted with multiple datasets, a methodology for aggreg
 // ②リソースに制限される可能性がある。評価時にはfine-tuningを行うがEOデータは高画質の場合もあり、大きなリソースが必要。
 
 As introduced, studies on GFMs for satellite imagery are rapidly advancing.
-However the following limitations have been identified. +
+However the following limitations have been identified, as reported in <<Survey>>, <<Foundation>>, and <<GEO-Bench-2>>. +
 
 *_Uncertainty evaluation_* +
 GFMs still struggle with generalization across domains. EO data are highly heterogeneous because they are collected from different sensors, regions and temporality. 
@@ -225,6 +241,3 @@ However, GFMs still provide limited interpretability. This problem becomes even 
 because the fusion process is complex and the internal reasoning steps are hard to visualize or interpret. +
 A promising direction for improving interpretability is applying explainable AI in remote sensing, enabling users to connect model outputs with geospatial evidence 
 (e.g., the specific pixels/regions responsible for the output) and physical evidence (e.g., thermal radiance).
-
-[.source]
-<<Survey>>, <<Foundation>>, <<GEO-Bench-2>>
