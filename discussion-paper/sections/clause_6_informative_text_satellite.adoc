@@ -9,8 +9,10 @@ Although research on multimodal models has been growing recently, we only focus 
 === Models, Tasks, Metrics, Datasets
 *_Models_* +
 This section describes representative GFMs released in 2024 or later.
+[caption=]
 |===
 |Model name |Backborn |Training methods |Pretrain images |Description
+
 |<<THOR>> |transformer-based |Contrastive learning |Sentinel-1, Sentinel-2, Sentinel-3 |First architecture to unify data from Sentinel-1, -2, and -3 (OLCI & SLSTR) satellites using framework that extends the flexible patching to a MAE setup.
 |<<Prithvi-EO-2.0>> |transformer-based |MAE |Landsat 8, 9 and Sentinel-2 |A multitemporal model trained on global time series data that incorporates temporal and location embeddings, with 600M parameters which is among the largest in the field of EO.
 |<<DOFA>> |transformer-based |MIM |Sentinel-1, Sentinel-2, Gaofen-2, NAIP, EnMAP |A multimodal model leverages wavelength as a unifying parameter across various EO modalities.
@@ -32,6 +34,7 @@ As mentioned above, we do not include vision-language tasks such as caption gene
 // ISOを引用した方がこちら↓
 |===
 |Task name |Description 
+
 |Semantic segmentation |task of assigning a class label to each pixel in a satellite image.
 |Change detection |recognition of changes between images acquired at different times. <<ISO19178-1, ISO 19178-1:2025>>
 |Regression |task of estimating continuous variables from satellite imagery, such as forest aboveground biomass, surface temperature or elevation. 
@@ -46,6 +49,7 @@ As mentioned above, we do not include vision-language tasks such as caption gene
 This section describes metrics and its definition. +
 |===
 |Metric name |Description |Task commonly used
+
 |mIoU 
 |The average IoU across all classes. (IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
 |Semantic segmentation, Change detection
@@ -102,6 +106,7 @@ This section describes metrics and its definition. +
 This section describes some popular datasets to evaluate downstream tasks.
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
+
 |<<SpaceNet>> |Semantic segmentation, Change detection |Planet |<<PANGAEA>>, <<GEO-Bench-2>>
 |<<BioMassters>> |Regression |Sentinel-1, Sentinel-2 |<<PANGAEA>>, <<GEO-Bench-2>>
 |<<So2Sat>> |Scene classification |Sentinel-1, Sentinel-2 |<<GEO-Bench>>, <<GEO-Bench-2>>
