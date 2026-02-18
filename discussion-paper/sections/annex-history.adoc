@@ -1,8 +1,8 @@
 [appendix]
 == Revision History
 
-[width="90%",options="header"]
+[%unnumbered, width="90%",options="header"]
 |===
 |Date |Release |Editor | Primary clauses modified |Description
-|2016-04-28 |0.1 |G. Editor |all |initial version
+|2026-03-04 |0.1 |Kyoung-Sook Kim, Hatsuho Kamata, Yuki Hara |all |initial version
 |===

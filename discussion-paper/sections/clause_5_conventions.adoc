@@ -1,5 +1,5 @@
-:sectnums:
-== Conventions
+// :sectnums:
+// == Conventions
 
 // === Abbreviated terms
 // |===
