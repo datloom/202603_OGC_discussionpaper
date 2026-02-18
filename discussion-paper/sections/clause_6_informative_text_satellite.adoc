@@ -225,7 +225,7 @@ As evaluation usually conducted with multiple datasets, a methodology for aggreg
 // ②リソースに制限される可能性がある。評価時にはfine-tuningを行うがEOデータは高画質の場合もあり、大きなリソースが必要。
 
 As introduced, studies on GFMs for satellite imagery are rapidly advancing.
-However the following limitations have been identified, as reported in <<Survey>>, <<Foundation>>, and <<GEO-Bench-2>>. +
+However the following limitations have been identified, as reported in <<GEO-Bench-2>>, <<Survey>> and <<Foundation>>. +
 
 *_Uncertainty evaluation_* +
 GFMs still struggle with generalization across domains. EO data are highly heterogeneous because they are collected from different sensors, regions and temporality. 
