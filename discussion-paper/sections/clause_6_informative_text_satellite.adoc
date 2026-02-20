@@ -4,7 +4,7 @@
 // Overviewとかの方がいい？
 The most common method to evaluate performance of GFM is to use downstream task. +
 This section introduces representative examples of models, tasks, metrics, dataset and the evaluation steps. +
-Although research on multimodal models has been growing recently, we only focus vision-only tasks.
+Although research on multimodal models has been growing recently, we only focus on vision-only tasks.
 
 === Models, Tasks, Metrics, Datasets
 This section describes representative models, tasks, metrics and datasets. +
@@ -44,10 +44,10 @@ As mentioned above, we do not include vision-language tasks such as caption gene
 |Task name |Description 
 
 |Semantic segmentation |task of assigning a class label to each pixel in a satellite image.
-|Change detection |recognition of changes between images acquired at different times. <<ISO19178-1, ISO 19178-1:2025>>
+|Change detection |recognition of changes between images acquired at different times. <<ISO_19178-1, ISO 19178-1:2025>>
 |Regression |task of estimating continuous variables from satellite imagery, such as forest aboveground biomass, surface temperature or elevation. 
-|Scene classification |task of identifying scene categories of images, on the basis of a training set of images whose scene categories are known. <<ISO19178-1, ISO 19178-1:2025>>
-|Object detection |recognition of objects from images. <<ISO19178-1, ISO 19178-1:2025>>
+|Scene classification |task of identifying scene categories of images, on the basis of a training set of images whose scene categories are known. <<ISO_19178-1, ISO 19178-1:2025>>
+|Object detection |recognition of objects from images. <<ISO_19178-1, ISO 19178-1:2025>>
 |===
 
 // Scene classification: 画像のクラスラベル
@@ -63,39 +63,39 @@ The following table describes representative metrics and its definition.
 |Metric name |Description |Task commonly used
 
 |mIoU 
-|The average IoU across all classes. (IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
+|The average IoU across all classes. (IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>>)
 |Semantic segmentation, Change detection
 |mAP
-|mAP averages precision scores across classes to reflect both classification and localization accuracy. (Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
+|mAP averages precision scores across classes to reflect both classification and localization accuracy. (Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>>)
 |Object detection
 //Instance segmentation, 
 |F1 
-|F1 score, also known as F-score, F-measure or F1-measure, is the harmonic mean of precision and recall with equal weights. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+|F1 score, also known as F-score, F-measure or F1-measure, is the harmonic mean of precision and recall with equal weights. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 |Change detection, Scene classification (multi label)
 |mF1 
 |The average F1 across all classes which is critical for high-precision tasks like building or road segmentation.
 |Semantic segmentation
 |Accuracy 
-|Accuracy is the ratio of correct predictions to all predictions. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+|Accuracy is the ratio of correct predictions to all predictions. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 |Scene classification (single label)
 |RMSE 
-|RMSE compares predicted and true values using the square root of MSE. Lower values of RMSE represent more accurate predictions. (MSE measures the average squared difference between estimated and true values. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
+|RMSE compares predicted and true values using the square root of MSE. Lower values of RMSE represent more accurate predictions. (MSE measures the average squared difference between estimated and true values. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>>)
 |Regression
 |===
 
 // |===
 // |Metric name |Description |Task commonly used
 // |Jaccard index (IoU)
-// |IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+// |IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 // |Semantic segmentation, Change detection
 // |Precision 
-// |Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. As precision increases, more true positives are detected, but false negatives are not accounted for. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+// |Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. As precision increases, more true positives are detected, but false negatives are not accounted for. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 // |Change detection
 // |Recall 
-// |Recall of a class is the proportion of samples correctly classified as positive for that class out of all positive samples. As recall increases, more true positives are detected, but false positives are not accounted for. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+// |Recall of a class is the proportion of samples correctly classified as positive for that class out of all positive samples. As recall increases, more true positives are detected, but false positives are not accounted for. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 // |Change detection
 // |F1 
-// |F1 score, also known as F-score, F-measure or F1-measure, is the harmonic mean of precision and recall with equal weights. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+// |F1 score, also known as F-score, F-measure or F1-measure, is the harmonic mean of precision and recall with equal weights. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 // |Change detection,  Multilabel classification
 // |mIoU 
 // |The average IoU across all classes.
@@ -107,10 +107,10 @@ The following table describes representative metrics and its definition.
 // |The average F1 across all classes which is critical for high-precision tasks like building or road segmentation.
 // |Semantic segmentation, Change detection
 // |Accuracy 
-// |Accuracy is the ratio of correct predictions to all predictions. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+// |Accuracy is the ratio of correct predictions to all predictions. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 // |Scene classification
 // |RMSE 
-// |RMSE compares predicted and true values using the square root of MSE. Lower values of RMSE represent more accurate predictions. (MSE measures the average squared difference between estimated and true values.) <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+// |RMSE compares predicted and true values using the square root of MSE. Lower values of RMSE represent more accurate predictions. (MSE measures the average squared difference between estimated and true values.) <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
 // |Regression
 // |===
 
