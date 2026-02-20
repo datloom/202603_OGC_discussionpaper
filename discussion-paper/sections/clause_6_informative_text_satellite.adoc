@@ -4,7 +4,7 @@
 // Overviewとかの方がいい？
 The most common method to evaluate performance of GFM is to use downstream task. +
 This section introduces representative examples of models, tasks, metrics, dataset and the evaluation steps. +
-Although research on multimodal models has been growing recently, we only focus vision-only tasks.
+Although research on multimodal models has been growing recently, we only focus on vision-only tasks.
 
 === Models, Tasks, Metrics, Datasets
 This section describes representative models, tasks, metrics and datasets. +
