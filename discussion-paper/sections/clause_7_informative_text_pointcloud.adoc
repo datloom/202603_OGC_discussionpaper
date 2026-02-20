@@ -1,9 +1,106 @@
 [obligation=informative]
 :sectnums:
-== Evaluation of GFMs 3D Point Cloud
-=== 3D Point Cloud Evaluation
-=== GFMs for 3D point Cloud 
-=== 3D Point Cloud
-==== Models, Tasks, Metrics, Datasets
-==== Challenges and Future Directions
+== GFMs for 3D Point Cloud
+GFMの現状について端的に述べる
+・点群取得方法の一つであるLiDARはモダリティの一つとして空間的、構造的理解を強化するものとして価値づけがなされているが、十分に活用されていない
+→「Survey of Multimodal Geospatial Foundation Models: Techniques,Applications, and Challenges」においても「空間情報の豊かさにも関わらず、構造的不整合や統合の困難さからGFMにおいて十分に活用されていない」と述べられており、LiDARも点群としてではなくMSやHS、DSM等のモダリティでしか扱われていない
+・msGFMなどのマルチモーダルGFMにおいてもDSMによる2.5次元の活用のみ
+・そこでまずは点群分野の主なモデル、データセット、タスク、評価指標について体系的に整理を行い、今後のGFM発展に寄与すべく課題点や展望について述べる
 
+=== Models, Datasets, Tasks, Metrics 
+*_Models_* +
+This section describes models for point clouds released in 2024 or later, and categorizes them according to the spatial scale at which they operate (object-level, scene-level, region-level, or global-level).
+
+・Object-level
+|===
+|Model name |Backborn |Format of PC |Training methods |Description
+|<<PointMamba>> |Mamba-based | point-based |MAE |A scalable 3D representation learning model that efficiently captures long-range dependencies using the Mamba state space model. It applies linear-complexity sequence modeling—positioned as an alternative to Transformers to point clouds.
+|<<Point-DAE>> |Backbone-agnostic | point-based |DAE |A generalized denoising autoencoder framework for point cloud representation learning that reconstructs clean point clouds from corrupted inputs, leveraging both local (masking) and global (affine transformation) corruptions to enhance geometric understanding.
+|===
+
+・Scene-level
+|===
+|Model name |Backborn |Format of PC |Training methods |Description
+|<<BEV-MAE>> |CNN-based |BEV |MAE |A self-supervised pre-training framework that learns spatial representations from point clouds by masking and reconstructing BEV tokens. It converts sparse 3D point clouds into structured BEV grids and applies a masked autoencoding strategy to learn global geometric and contextual features for downstream tasks.
+|<<Point Transformer V3>> |Transformer-based |point-based |Supervised training |A scalable Transformer architecture for 3D point clouds that improves efficiency and performance over previous Point Transformer versions. It introduces optimized attention mechanisms and hierarchical design to better handle large-scale scenes, enabling strong performance on semantic segmentation and scene understanding benchmarks.
+|===
+
+・Region-level
+|===
+|Model name |Backborn |Format of PC |Training methods |Description
+
+|===
+
+・Global-level
+|===
+|Model name |Backborn |Format of PC |Training methods |Description
+
+|===
+
+*_Datasets_* +
+This section describes datasets for point clouds  and categorizes them according to the spatial scale.
+
+・Object-level
+|===
+|Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
+|<<ShapeNet>> |Semantic segmentation |Point cloud |The dataset itself is primarily treated as a benchmark.
+|<<Building-PCC>> |Point cloud completion |Point cloud |<<Building Point Cloud Completion Benchmarks>>
+|===
+
+・Scene-level
+|===
+|Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
+|<<S3DIS>> |Semantic Segmentation, Instance Segmentation |Point cloud(indoor) |The dataset itself is primarily treated as a benchmark.
+|<<Semantic3D>> |Semantic Segmentation,  Object Detection |Point cloud(outdoor) |<< Large-Scale Point Cloud Classification Benchmark>>
+|===
+
+・Region-level
+|===
+|Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
+|<<KITTI>> |Semantic Segmentation, Panoptic Segmentation, 4D Panoptic Segmentation, Moving Object Segmentation, Semantic Scene Completion |Point cloud(outdoor) |<<SEMANTIC KITTI>>
+|<<OpenGF>> |Semantic Segmentation, Terrain scene recognition |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
+|===
+
+・Global-level
+|===
+|Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
+|<<USGS 3DEP>> |Semantic Segmentation, Ground / non-ground classification |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
+|<<OpenTopography>> |Terrain scene recognition, Ground / non-ground classification |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
+|===
+
+*_Tasks_* +
+This section describes typical 3D downstream tasks used to evaluate 3D models. +
+As mentioned above, we do not include vision-language tasks such as caption generation or counting.
+|===
+|Task name |Description 
+|Semantic segmentation |task of assigning a class label to each point in each point cloud.
+|===
+
+*_Metrics_* +
+This section describes metrics and its definition. +
+|===
+|Metric name |Description |Task commonly used
+|mIoU 
+|The average IoU across all classes. (IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
+|Semantic segmentation
+|mAP
+|mAP averages precision scores across classes to reflect both classification and localization accuracy. (Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
+|Instance segmentation
+|Accuracy 
+|Accuracy is the ratio of correct predictions to all predictions. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
+|Scene classification 
+|===
+
+
+
+=== Challenges and Future Directions
+・3DGFM開発を妨げる要因と今後の方向性
+→地理空間タスクが煩雑に存在しすぎる
+⇒地理空間タスクを明確に定義する
+→大規模データセットの不足
+⇒未活用のALS点群等をリサンプルする手法の開発
+→マルチモーダル化
+⇒モダリティ適応の統一フレームワーク
+→GFMに対する評価フレームワーク（主に地理的なドメイン由来のバイアスについて）
+→モデルの解釈性、信頼性
+⇒RAI原則を導入
