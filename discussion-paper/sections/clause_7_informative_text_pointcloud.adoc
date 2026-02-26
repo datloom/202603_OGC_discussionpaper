@@ -1,41 +1,45 @@
 [obligation=informative]
 :sectnums:
 == GFMs for 3D Point Cloud
-GFMの現状について端的に述べる
-・点群取得方法の一つであるLiDARはモダリティの一つとして空間的、構造的理解を強化するものとして価値づけがなされているが、十分に活用されていない
-→「Survey of Multimodal Geospatial Foundation Models: Techniques,Applications, and Challenges」においても「空間情報の豊かさにも関わらず、構造的不整合や統合の困難さからGFMにおいて十分に活用されていない」と述べられており、LiDARも点群としてではなくMSやHS、DSM等のモダリティでしか扱われていない
-・msGFMなどのマルチモーダルGFMにおいてもDSMによる2.5次元の活用のみ
-・そこでまずは点群分野の主なモデル、データセット、タスク、評価指標について体系的に整理を行い、今後のGFM発展に寄与すべく課題点や展望について述べる
+In GFM, LiDAR—one of the primary methods for acquiring point clouds—is positioned as a modality that enhances spatial and structural understanding. However, it is not yet fully utilized in practice. +
+Several papers have summarized the current status of GFM, noting that despite the richness of spatial information, point clouds have not been sufficiently leveraged in GFM due to structural inconsistencies and the difficulty of integration. In many cases, LiDAR data are not used directly as point clouds, but rather in derived modalities such as MS, HS, or DSM. +
+Although multimodal GFMs such as msGFM exist and incorporate LiDAR as one of the modalities, its use is limited to 2.5D representations such as DSM, and has not yet extended to handling full 3D information with point clouds as direct input. +
+Given this situation, we systematically organize the major models, datasets, tasks, and evaluation metrics in the point cloud domain, and discuss the challenges and future directions to contribute to the further development of GFM.
 
 === Models, Datasets, Tasks, Metrics 
 *_Models_* +
-This section describes models for point clouds released in 2024 or later, and categorizes them according to the spatial scale at which they operate (object-level, scene-level, region-level, or global-level).
+This section describes models for point clouds released in 2024 or later, and categorizes them according to the spatial scale at which they operate (object-level, scene-level, region-level, or global-level). +
 
-・Object-level
+We introduce models that follow the definitions described below. +
+The definition of Object-level is that the model treats data at the scale of a single object or a single building as one data instance. +
+The definition of Scene-level is that the model treats data at the scale of an indoor or outdoor scene as a single data instance. +
+The definition of Region-level is that the model treats data at the scale of a region or an urban area as a single data instance. +
+The definition of Global-level is that the model treats data at the scale of a country or the entire Earth as a single data instance.
+
+・Object-level +
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
-|<<PointMamba>> |Mamba-based | point-based |MAE |A scalable 3D representation learning model that efficiently captures long-range dependencies using the Mamba state space model. It applies linear-complexity sequence modeling—positioned as an alternative to Transformers to point clouds.
+|<<PointMamba>> |Mamba-based | point-based |Supervised training |A scalable 3D representation learning model that efficiently captures long-range dependencies using the Mamba state space model. It applies linear-complexity sequence modeling—positioned as an alternative to Transformers to point clouds.
 |<<Point-DAE>> |Backbone-agnostic | point-based |DAE |A generalized denoising autoencoder framework for point cloud representation learning that reconstructs clean point clouds from corrupted inputs, leveraging both local (masking) and global (affine transformation) corruptions to enhance geometric understanding.
 |===
 
-・Scene-level
+・Scene-level +
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
 |<<BEV-MAE>> |CNN-based |BEV |MAE |A self-supervised pre-training framework that learns spatial representations from point clouds by masking and reconstructing BEV tokens. It converts sparse 3D point clouds into structured BEV grids and applies a masked autoencoding strategy to learn global geometric and contextual features for downstream tasks.
 |<<Point Transformer V3>> |Transformer-based |point-based |Supervised training |A scalable Transformer architecture for 3D point clouds that improves efficiency and performance over previous Point Transformer versions. It introduces optimized attention mechanisms and hierarchical design to better handle large-scale scenes, enabling strong performance on semantic segmentation and scene understanding benchmarks.
+|<<3DLST>> |Sparse 3D CNN + Transformer hybrid |point-voxel hybrid |Supervised training |A LiDAR semantic segmentation framework that combines sparse 3D convolutions for local geometric encoding with Transformer modules for long-range dependency modeling. It is designed to efficiently process large-scale outdoor LiDAR scenes by leveraging voxelization and sparse computation while capturing global spatial context.
 |===
 
-・Region-level
+・Region-level +
+At present, in models such as 3DLST, the input unit of data handled by the model is at the Scene-level. Although various efforts have been made to enlarge the scale by extending the spatial range covered, there are still only a few large-scale models whose input unit is inherently at the Region-level. 
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
-
+|<<OpenUrban3D>> |Transformer-based |point-based |masked geometric modeling + spatial context objectives |A region-level foundation model for large-scale urban 3D point clouds. It leverages hierarchical spatial partitioning and masked geometric modeling to learn transferable representations across extensive outdoor regions, enabling scalable adaptation to downstream tasks such as semantic segmentation, classification, and urban scene understanding.
 |===
 
-・Global-level
-|===
-|Model name |Backborn |Format of PC |Training methods |Description
-
-|===
+・Global-level +
+At the Global-level, no models that meet the definition above could be identified in the published literature. As the field of point cloud–based GFM continues to develop, it is expected that models capable of handling data at the Global-level will emerge in the future.
 
 *_Datasets_* +
 This section describes datasets for point clouds  and categorizes them according to the spatial scale.
@@ -51,7 +55,7 @@ This section describes datasets for point clouds  and categorizes them according
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
 |<<S3DIS>> |Semantic Segmentation, Instance Segmentation |Point cloud(indoor) |The dataset itself is primarily treated as a benchmark.
-|<<Semantic3D>> |Semantic Segmentation,  Object Detection |Point cloud(outdoor) |<< Large-Scale Point Cloud Classification Benchmark>>
+|<<Semantic3D>> |Semantic Segmentation, Object Detection |Point cloud(outdoor) |<< Large-Scale Point Cloud Classification Benchmark>>
 |===
 
 ・Region-level
@@ -70,10 +74,16 @@ This section describes datasets for point clouds  and categorizes them according
 
 *_Tasks_* +
 This section describes typical 3D downstream tasks used to evaluate 3D models. +
-As mentioned above, we do not include vision-language tasks such as caption generation or counting.
+
 |===
 |Task name |Description 
 |Semantic segmentation |task of assigning a class label to each point in each point cloud.
+|Instance segmentation |task of identifying and separating individual object instances within a point cloud while simultaneously assigning a semantic class label to each instance.
+|Panoptic Segmentation |task of unifying semantic segmentation and instance segmentation by assigning each point in a point cloud both a semantic class label and an instance identity.
+|Terrain scene recognition |task of classifying an entire terrain scene or large-scale outdoor point cloud into a predefined scene category (e.g., urban, forest, farmland, desert) based on its global geometric and structural characteristics, rather than assigning labels to individual points or objects.
+|Classification |task of assigning a single category label to an entire point cloud (or object-level point set) based on its overall geometric and structural features, without producing point-wise predictions.
+|Object Detection |task of identifying and localizing individual objects within a point cloud by predicting their spatial locations (e.g., 3D bounding boxes) and assigning a semantic class label to each detected object.
+|Semantic Scene Completion |task of jointly predicting the complete 3D geometry of a scene and assigning a semantic class label to each voxel or point, including both observed and occluded regions, based on partial input data.
 |===
 
 *_Metrics_* +
@@ -82,25 +92,57 @@ This section describes metrics and its definition. +
 |Metric name |Description |Task commonly used
 |mIoU 
 |The average IoU across all classes. (IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
-|Semantic segmentation
-|mAP
-|mAP averages precision scores across classes to reflect both classification and localization accuracy. (Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
-|Instance segmentation
-|Accuracy 
+|Semantic Segmentation, Instance Segmentation, Panoptic Segmentation
+|Overall Accuracy(OA) 
 |Accuracy is the ratio of correct predictions to all predictions. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>> 
-|Scene classification 
+|Terrain Scene Recognition, Scene Classification, Semantic Segmentation
+|Mean Class Accuracy(mAcc) 
+|The average of per-class accuracies, computed by first calculating the accuracy for each class independently (i.e., the number of correctly predicted samples of a class divided by the total number of ground-truth samples in that class), and then averaging these values across all classes. 
+|Semantic Segmentation
+|F1 
+|F1 score, also known as F-score, F-measure or F1-measure, is the harmonic mean of precision and recall with equal weights. <<ISOIECCD_4213, ISO/IEC CD 4213:2025>> 
+|Semantic Segmentation, Terrain Scene Recognition
+|mAP(mean Average Precision)
+|mAP averages precision scores across classes to reflect both classification and localization accuracy. (Precision of a class is the proportion of samples correctly classified as positive for that class out of all samples classified as positive. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
+|Instance Segmentation, Object Detection
+|PQ(Panoptic Quality)
+|A unified metric for panoptic segmentation that evaluates both segmentation and recognition performance. It is defined as PQ = SQ × RQ, where Segmentation Quality (SQ) measures the average IoU of matched segments, and Recognition Quality (RQ) measures the detection performance as the F1-score over matched segments. PQ jointly accounts for correct classification, accurate segmentation, and proper instance matching.
+|Panoptic Segmentation 
+|SSC-mIoU (mean IoU for Semantic Scene Completion) 
+|The average IoU across all semantic classes for the semantic scene completion task. It evaluates the overlap between predicted and ground-truth voxel labels over both observed and previously occluded regions. IoU for each class is computed as the ratio of correctly predicted occupied voxels of that class to the union of predicted and ground-truth voxels of the same class, and SSC-mIoU is obtained by averaging these IoUs across all classes. 
+|Semantic Scene Completion
 |===
 
-
-
 === Challenges and Future Directions
-・3DGFM開発を妨げる要因と今後の方向性
-→地理空間タスクが煩雑に存在しすぎる
-⇒地理空間タスクを明確に定義する
-→大規模データセットの不足
-⇒未活用のALS点群等をリサンプルする手法の開発
-→マルチモーダル化
-⇒モダリティ適応の統一フレームワーク
-→GFMに対する評価フレームワーク（主に地理的なドメイン由来のバイアスについて）
-→モデルの解釈性、信頼性
-⇒RAI原則を導入
+We describe the factors that hinder the development of 3D GFM and discuss future directions.
+
+*_Lack of large-scale datasets_* +
+//ALS-pretrainingから引用し、一部加筆したもの
+Although several largescale datasets, such as OpenGF and PureForest, exist, they lack the
+scale and land cover diversity necessary for training versatile models. Furthermore, while numerous freely available ALS LiDAR data sources, such as the United States Geological Survey 3D Elevation Program (USGS 3DEP) and the Actueel Hoogtebestand Nederland (AHN), provide extensive resources, there is currently a few efficient method to extract data from these sources. Leveraging all available data is computationally prohibitive and often redundant. These limitations collectively hinder progress in adopting the pre-training and fine-tuning paradigm for GFM. +
+//
+With the development of methods that extract diverse data from sources such as ALS-pretraining, there is a growing need for the construction of large-scale datasets for pre-training.
+
+*_Clear definition of downstream tasks_* +
+Geospatial tasks span a wide range of downstream applications, including segmentation, terrain scene classification, tree species classification, and geographic question answering. However, there is no universally accepted set of tasks. +
+At present, no existing foundation model can adapt to all conceivable tasks. Every FM is designed to address a finite set of tasks. +
+Therefore, if a core set of GeoAI tasks were established, GeoFM developers would be able to determine which subset of tasks their resulting GeoFM can effectively adapt to.
+
+*_Generalization in the multimodal domain_* +
+Geospatial information exists in various modalities within the remote sensing (RS) domain, including LiDAR, each providing different types of information. Point cloud data contain rich geospatial information, and extending GFM to incorporate point cloud modalities is therefore an important research direction. +
+However, even for GFMs that handle two-dimensional information such as satellite imagery, multimodal integration still faces the following challenges, and these issues are not avoided when extending GFM to the point cloud modality.
+
+//[Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and Challenges]から本文をそのまま引用
+RS data are inherently heterogeneous, encompassing multi-source, multimodal, and multi-temporal properties. Their spatial distribution varies widely across regions, leading to intra- and inter-domain shifts that limit model generalization.
+//
+
+//[Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and Challenges]に記載のFuture Derectionを参照
+Even when leveraging point cloud data in GFM, it is expected that introducing a unified framework capable of adaptively balancing multimodal discrepancies could enable robust and semantically consistent RS understanding.
+//
+
+*_Model interpretability and reliability_* +
+//[Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and Challenges]に記載のFuture Derectionを参照
+GFM is expected to be actively deployed in high-risk domains such as environmental monitoring, climate change assessment, and disaster response, where the decisions made based on these systems can have significant social and ecological impacts. Therefore, in addition to transparency, traceability, and robustness, the integration of Responsible AI (RAI) principles is also required. +
+Many current GFMs have limited interpretability, which constrains their ability to provide verifiable and trustworthy insights to domain experts. +
+Accordingly, it is recommended that future efforts integrate RAI principles not only into performance evaluation metrics but also throughout the entire lifecycle of GFM, including model design, training, and deployment.
+//
