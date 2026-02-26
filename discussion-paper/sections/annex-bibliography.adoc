@@ -3,16 +3,18 @@
 == Bibliography
 // [[[anchor, document identifier]]]
 * [[[PANGAEA, 1]]], Valerio Marsocci, Yuru Jia, Georges Le Bellier, David Kerekes, Liang Zeng, Sebastian Hafner, Sebastian Gerard, Eric Brune, Ritu Yadav, Ali Shibli, et al. 
-_Pangaea: A global and inclusive benchmark for geospatial foundation models_ (2024)
+_Pangaea: A global and inclusive benchmark for geospatial foundation models_ (2025)
 * [[[GEO-Bench-2, 1]]], Naomi Simumba, Nils Lehmann, Paolo Fraccaro, Hamed Alemohammad, Geeth De Mel, Salman Khan, Manil Maskey, Nicolas Longepe, Xiao Xiang Zhu, Hannah Kerner, Juan Bernabe-Moreno, Alexander Lacoste. 
-_GEO-Bench-2: From Performance to Capability, Rethinking Evaluation in Geospatial AI_ (2025)
+_GEO-Bench-2: From Performance to Capability, Rethinking Evaluation in Geospatial AI_ (2026)
 * [[[GEO-Bench, 1]]], Alexandre Lacoste, Nils Lehmann, Pau Rodriguez, Evan David Sherwin, Hannah Kerner, Björn Lütjens, Jeremy Andrew Irvin, David Dao, Hamed Alemohammad, Alexandre Drouin, Mehmet Gunturkun, Gabriel Huang, David Vazquez, Dava Newman, Yoshua Bengio, Stefano Ermon, Xiao Xiang Zhu. 
 _GEO-Bench: Toward Foundation Models for Earth Monitoring_ (2023)
-* [[[SpaceNet, 1]]], Adam Van Etten, Dave Lindenbaum, Todd M. Bacastow. _SpaceNet: A Remote Sensing Dataset and Challenge Series_ (2018)
+* [[[SpaceNet, 1]]], Adam Van Etten, Dave Lindenbaum, Todd M. Bacastow. _SpaceNet: A Remote Sensing Dataset and Challenge Series_ (2019)
 * [[[BioMassters, 1]]], Andrea Nascetti, Ritu Yadav, Kirill Brodt, Qixun Qu, Hongwei Fan, Yuri Shendryk, Isha Shah, and Christine Chung. 
 _Biomassters: A benchmark dataset for forest biomass estimation using multi-modal satellite time-series_ (2023)
-* [[[So2Sat, 1]]], Xiao Xiang Zhu, Senior Member, IEEE, Jingliang Hu, Chunping Qiu, Yilei Shi, Jian Kang, Lichao Mou, Hossein Bagheri, Matthias Haberle, Yuansheng Hua, Rong Huang, Lloyd Hughes, Hao Li, Yao Sun, ¨Guichen Zhang, Shiyao Han, Michael Schmitt, Senior Member, IEEE, and Yuanyuan Wang, Member, IEEE. 
-_So2Sat LCZ42: A Benchmark Dataset for Global Local Climate Zones Classification_ (2019)
+// * [[[So2Sat, 1]]], Xiao Xiang Zhu, Senior Member, IEEE, Jingliang Hu, Chunping Qiu, Yilei Shi, Jian Kang, Lichao Mou, Hossein Bagheri, Matthias Haberle, Yuansheng Hua, Rong Huang, Lloyd Hughes, Hao Li, Yao Sun, ¨Guichen Zhang, Shiyao Han, Michael Schmitt, Senior Member, IEEE, and Yuanyuan Wang, Member, IEEE. 
+// _So2Sat LCZ42: A Benchmark Dataset for Global Local Climate Zones Classification_ (2019)
+// GEOBENCH-2から引用
+* [[[So2Sat, doi:10.1109/MGRS.2020.2964708]]] 
 * [[[EverWatch, 1]]], Lindsey Garner, Ben Weinstein, Michael Rickershauser, Melissa Baldino, Holly Coates, Mary Commins, Tracey Faber, Jonah Gula, Shayly Van Ert, Peter Frederick, Ethan White, and S.K. Morgan Ernest. 
 _Everwatch benchmark: training and evaluation data for detection and species classification of everglades wading birds from airborne imagery_ (2024)
 * [[[THOR, 1]]], Theodor Forgaard, Jarle H. Reksten, Anders U. Waldeland, Valerio Marsocci, Nicolas Longépé, Michael Kampffmeyer, Arnt-Børre Salberg. 
@@ -20,16 +22,16 @@ _THOR: A Versatile Foundation Model for Earth Observation Climate and Society Ap
 * [[[Prithvi-EO-2.0, 1]]], Daniela Szwarcman, Sujit Roy, Paolo Fraccaro, Þorsteinn Elí Gíslason, Benedikt Blumenstiel, Rinki Ghosal, Pedro Henrique de Oliveira, Joao Lucas de Sousa Almeida, Rocco Sedona, Yanghui Kang, Srija Chakraborty, Sizhe Wang, Carlos Gomes, Ankur Kumar, Myscon Truong, Denys Godwin, Hyunho Lee, Chia-Yu Hsu, Ata Akbari Asanjan, Besart Mujeci, Disha Shidham, Trevor Keenan, Paulo Arevalo, Wenwen Li, Hamed Alemohammad, Pontus Olofsson, Christopher Hain, Robert Kennedy, Bianca Zadrozny, David Bell, Gabriele Cavallaro, Campbell Watson, Manil Maskey, Rahul Ramachandran, Juan Bernabe Moreno. 
 _Prithvi-EO-2.0: A Versatile Multi-Temporal Foundation Model for Earth Observation Applications_ (2024)
 * [[[DOFA, 1]]], Zhitong Xiong, Yi Wang, Fahong Zhang, Adam J. Stewart, Joëlle Hanna, Damian Borth, Ioannis Papoutsis, Bertrand Le Saux, Gustau Camps-Valls, Xiao Xiang Zhu. 
-_Neural Plasticity-Inspired Multimodal Foundation Model for Earth Observation_ (2024)
+_Neural Plasticity-Inspired Multimodal Foundation Model for Earth Observation_ (2025)
 * [[[Survey, 1]]], Liling Yang, Ning Chen, Jun Yue, Yidan Liu, Jiayi Ma, Pedram Ghamisi, Antonio Plaza, Leyuan Fang. 
 _Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, and Challenges_ (2025)
 * [[[Foundation, 1]]], Aoran Xiao, Weihao Xuan, Junjue Wang, Jiaxing Huang, Dacheng Tao, Shijian Lu, Naoto Yokoya. 
-_Foundation Models for Remote Sensing and Earth Observation: A Survey_ (2024)
+_Foundation Models for Remote Sensing and Earth Observation: A Survey_ (2025)
 * [[[LTAE, 1]]], Vivien Sainte Fare Garnot, Loic Landrieu. 
 _Lightweight Temporal Self-Attention for Classifying Satellite Image Time Series_ (2020)
 * [[[ISOIECCD_4213, 1]]], ISO/IEC Committee Draft 4213, _Information technology -- Artificial Intelligence -- Performance measurement for AI classification, regression clustering and recommendation tasks_ (2025)
 * [[[ISO_19178-1, ISO 19178-1:2025]]]
 * [[[ISOIECIEEE_24765, ISO/IEC/IEEE 24765:2017]]]
 // * [[[ISOIEC_22989, ISO/IEC 22989:2022]]]
-* [[[Cross-sensor, 1]]], Valerio Marsocci and Nicolas Audebert. _Cross-sensor self-supervised training and alignment for remote sensing_ (2024)
+* [[[Cross-sensor, 1]]], Valerio Marsocci and Nicolas Audebert. _Cross-sensor self-supervised training and alignment for remote sensing_ (2025)
 * [[[ISO_19101-2, ISO 19101-2:2018]]]
