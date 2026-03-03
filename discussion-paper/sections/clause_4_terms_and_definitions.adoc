@@ -58,4 +58,5 @@ data from the same location captured at different timeframes
 |HS |Hyperspectral
 |DSM |Digital Surface Model
 |DAE |Denoising Autoencoders
+|ALS |Airborne Laser Scanning
 |===
