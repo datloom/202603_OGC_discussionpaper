@@ -7,7 +7,8 @@ Although multimodal GFMs such as msGFM exist and incorporate LiDAR as one of the
 Given this situation, we systematically organize the major models, datasets, tasks, and evaluation metrics in the point cloud domain, and discuss the challenges and future directions to contribute to the further development of GFM.
 
 === Models, Datasets, Tasks, Metrics 
-*_Models_* +
+//*_Models_* +
+==== Models
 This section describes models for point clouds released in 2024 or later, and categorizes them according to the spatial scale at which they operate (object-level, scene-level, region-level, or global-level). +
 
 We introduce models that follow the definitions described below. +
@@ -16,67 +17,85 @@ The definition of Scene-level is that the model treats data at the scale of an i
 The definition of Region-level is that the model treats data at the scale of a region or an urban area as a single data instance. +
 The definition of Global-level is that the model treats data at the scale of a country or the entire Earth as a single data instance.
 
-・Object-level +
+*_Object-level_* +
+[%unnumbered]
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
-|<<PointMamba>> |Mamba-based | point-based |Supervised training |A scalable 3D representation learning model that efficiently captures long-range dependencies using the Mamba state space model. It applies linear-complexity sequence modeling—positioned as an alternative to Transformers to point clouds.
-|<<Point-DAE>> |Backbone-agnostic | point-based |DAE |A generalized denoising autoencoder framework for point cloud representation learning that reconstructs clean point clouds from corrupted inputs, leveraging both local (masking) and global (affine transformation) corruptions to enhance geometric understanding.
+
+|<<PointMamba, PointMamba>> |Mamba-based | point-based |Supervised training |3D representation learning model that efficiently captures long-range dependencies using the Mamba state space model. It applies linear-complexity sequence modeling—positioned as an alternative to Transformers to point clouds.
+|<<Point-DAE, Point-DAE>> |Backbone-agnostic | point-based |DAE |A generalized denoising autoencoder framework for point cloud representation learning that reconstructs clean point clouds from corrupted inputs, leveraging both local (masking) and global (affine transformation) corruptions to enhance geometric understanding.
 |===
 
-・Scene-level +
+*_Scene-level_* +
+[%unnumbered]
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
-|<<BEV-MAE>> |CNN-based |BEV |MAE |A self-supervised pre-training framework that learns spatial representations from point clouds by masking and reconstructing BEV tokens. It converts sparse 3D point clouds into structured BEV grids and applies a masked autoencoding strategy to learn global geometric and contextual features for downstream tasks.
-|<<Point Transformer V3>> |Transformer-based |point-based |Supervised training |A scalable Transformer architecture for 3D point clouds that improves efficiency and performance over previous Point Transformer versions. It introduces optimized attention mechanisms and hierarchical design to better handle large-scale scenes, enabling strong performance on semantic segmentation and scene understanding benchmarks.
-|<<3DLST>> |Sparse 3D CNN + Transformer hybrid |point-voxel hybrid |Supervised training |A LiDAR semantic segmentation framework that combines sparse 3D convolutions for local geometric encoding with Transformer modules for long-range dependency modeling. It is designed to efficiently process large-scale outdoor LiDAR scenes by leveraging voxelization and sparse computation while capturing global spatial context.
+
+|<<BEV-MAE, BEV-MAE>> |CNN-based |BEV |MAE |A self-supervised pre-training framework that learns spatial representations from point clouds by masking and reconstructing BEV tokens. It converts sparse 3D point clouds into structured BEV grids and applies a masked autoencoding strategy to learn global geometric and contextual features for downstream tasks.
+|<<Point Transformer V3, Point Transformer V3>> |Transformer-based |point-based |Supervised training |A scalable Transformer architecture for 3D point clouds that improves efficiency and performance over previous Point Transformer versions. It introduces optimized attention mechanisms and hierarchical design to better handle large-scale scenes, enabling strong performance on semantic segmentation and scene understanding benchmarks.
+|<<3DLST, 3DLST>> |Sparse 3D CNN + Transformer hybrid |point-voxel hybrid |Supervised training |A LiDAR semantic segmentation framework that combines sparse 3D convolutions for local geometric encoding with Transformer modules for long-range dependency modeling. It is designed to efficiently process large-scale outdoor LiDAR scenes by leveraging voxelization and sparse computation while capturing global spatial context.
 |===
 
-・Region-level +
+*_Region-level_* +
 At present, in models such as 3DLST, the input unit of data handled by the model is at the Scene-level. Although various efforts have been made to enlarge the scale by extending the spatial range covered, there are still only a few large-scale models whose input unit is inherently at the Region-level. 
+[%unnumbered]
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
-|<<OpenUrban3D>> |Transformer-based |point-based |masked geometric modeling + spatial context objectives |A region-level foundation model for large-scale urban 3D point clouds. It leverages hierarchical spatial partitioning and masked geometric modeling to learn transferable representations across extensive outdoor regions, enabling scalable adaptation to downstream tasks such as semantic segmentation, classification, and urban scene understanding.
+
+|<<OpenUrban3D, OpenUrban3D>> |Transformer-based |point-based |masked geometric modeling + spatial context objectives |A region-level foundation model for large-scale urban 3D point clouds. It leverages hierarchical spatial partitioning and masked geometric modeling to learn transferable representations across extensive outdoor regions, enabling scalable adaptation to downstream tasks such as semantic segmentation, classification, and urban scene understanding.
 |===
 
-・Global-level +
+*_Global-level_* +
 At the Global-level, no models that meet the definition above could be identified in the published literature. As the field of point cloud–based GFM continues to develop, it is expected that models capable of handling data at the Global-level will emerge in the future.
 
-*_Datasets_* +
+//*_Datasets_* +
+==== Datasets
 This section describes datasets for point clouds  and categorizes them according to the spatial scale.
 
-・Object-level
+*_Object-level_*
+[%unnumbered]
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
-|<<ShapeNet>> |Semantic segmentation |Point cloud |The dataset itself is primarily treated as a benchmark.
-|<<Building-PCC>> |Point cloud completion |Point cloud |<<Building Point Cloud Completion Benchmarks>>
+
+|<<ShapeNet, ShapeNet>> |Semantic segmentation |Point cloud |The dataset itself is primarily treated as a benchmark.
+|<<Building-PCC, Building-PCC>> |Point cloud completion |Point cloud |Building Point Cloud Completion Benchmarks
 |===
 
-・Scene-level
+*_Scene-level_*
+[%unnumbered]
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
-|<<S3DIS>> |Semantic Segmentation, Instance Segmentation |Point cloud(indoor) |The dataset itself is primarily treated as a benchmark.
-|<<Semantic3D>> |Semantic Segmentation, Object Detection |Point cloud(outdoor) |<< Large-Scale Point Cloud Classification Benchmark>>
+
+|S3DIS |Semantic Segmentation, Instance Segmentation |Point cloud(indoor) |The dataset itself is primarily treated as a benchmark.
+|<<Semantic3D, Semantic3D>> |Semantic Segmentation, Object Detection |Point cloud(outdoor) | Large-Scale Point Cloud Classification Benchmark
 |===
 
-・Region-level
+*_Region-level_*
+[%unnumbered]
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
-|<<KITTI>> |Semantic Segmentation, Panoptic Segmentation, 4D Panoptic Segmentation, Moving Object Segmentation, Semantic Scene Completion |Point cloud(outdoor) |<<SEMANTIC KITTI>>
-|<<OpenGF>> |Semantic Segmentation, Terrain scene recognition |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
+
+|<<KITTI, KITTI>> |Semantic Segmentation, Panoptic Segmentation, 4D Panoptic Segmentation, Moving Object Segmentation, Semantic Scene Completion |Point cloud(outdoor) |<<SemanticKITTI, SemanticKITTI>>
+|<<OpenGF, OpenGF>> |Semantic Segmentation, Terrain scene recognition |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
 |===
 
-・Global-level
+*_Global-level_*
+[%unnumbered]
 |===
 |Datasets name |Task to evaluate |Modalities |Benchmark using this dataset
-|<<USGS 3DEP>> |Semantic Segmentation, Ground / non-ground classification |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
-|<<OpenTopography>> |Terrain scene recognition, Ground / non-ground classification |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
+
+|USGS 3DEP |Semantic Segmentation, Ground / non-ground classification |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
+|OpenTopography |Terrain scene recognition, Ground / non-ground classification |Point cloud(outdoor) |The dataset itself is primarily treated as a benchmark.
 |===
 
-*_Tasks_* +
+//*_Tasks_* +
+==== Tasks
 This section describes typical 3D downstream tasks used to evaluate 3D models. +
 
+[%unnumbered]
 |===
 |Task name |Description 
+
 |Semantic segmentation |task of assigning a class label to each point in each point cloud.
 |Instance segmentation |task of identifying and separating individual object instances within a point cloud while simultaneously assigning a semantic class label to each instance.
 |Panoptic Segmentation |task of unifying semantic segmentation and instance segmentation by assigning each point in a point cloud both a semantic class label and an instance identity.
@@ -86,10 +105,14 @@ This section describes typical 3D downstream tasks used to evaluate 3D models. +
 |Semantic Scene Completion |task of jointly predicting the complete 3D geometry of a scene and assigning a semantic class label to each voxel or point, including both observed and occluded regions, based on partial input data.
 |===
 
-*_Metrics_* +
+//*_Metrics_* +
+==== Metrics
 This section describes metrics and its definition. +
+
+[%unnumbered]
 |===
 |Metric name |Description |Task commonly used
+
 |mIoU 
 |The average IoU across all classes. (IoU is defined as the number of correctly predicted labels divided by the union of predicted and true labels. <<ISO/IEC_4213, ISO/IEC CD 4213:2025>>)
 |Semantic Segmentation, Instance Segmentation, Panoptic Segmentation
