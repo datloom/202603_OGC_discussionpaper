@@ -3,7 +3,7 @@
 == GFMs for 3D Point Cloud
 In GFM, LiDAR — one of the primary methods for acquiring point clouds — is positioned as a modality that enhances spatial and structural understanding. However, it is not yet fully utilized in practice. +
 Several papers have summarized the current status of GFM, noting that despite the richness of spatial information, point clouds have not been sufficiently leveraged in GFM due to structural inconsistencies and the difficulty of integration. In many cases, LiDAR data are not used directly as point clouds, but rather in derived modalities such as MS, HS, or DSM. +
-Although multimodal GFMs such as msGFM exist and incorporate LiDAR as one of the modalities, its use is limited to 2.5D representations such as DSM, and has not yet extended to handling full 3D information with point clouds as direct input. +
+Although multimodal GFMs such as <<msGFM, msGFM>> exist and incorporate LiDAR as one of the modalities, its use is limited to 2.5D representations such as DSM, and has not yet extended to handling full 3D information with point clouds as direct input. +
 Given this situation, we systematically organize the major models, datasets, tasks, and evaluation metrics in the point cloud domain, and discuss the challenges and future directions to contribute to the further development of GFM.
 
 === Models, Datasets, Tasks, Metrics 
@@ -37,7 +37,7 @@ The definition of Global-level is that the model treats data at the scale of a c
 |===
 
 *_Region-level_* +
-At present, in models such as 3DLST, the input unit of data handled by the model is at the Scene-level. Although various efforts have been made to enlarge the scale by extending the spatial range covered, there are still only a few large-scale models whose input unit is inherently at the Region-level. 
+At present, in models such as <<3DLST, 3DLST>>, the input unit of data handled by the model is at the Scene-level. Although various efforts have been made to enlarge the scale by extending the spatial range covered, there are still only a few large-scale models whose input unit is inherently at the Region-level. 
 [%unnumbered]
 |===
 |Model name |Backborn |Format of PC |Training methods |Description
@@ -141,15 +141,14 @@ We describe the factors that hinder the development of 3D GFM and discuss future
 
 *_Lack of large-scale datasets_* +
 //ALS-pretrainingから引用し、一部加筆したもの
-Although several largescale datasets, such as OpenGF and PureForest, exist, they lack the
-scale and land cover diversity necessary for training versatile models. Furthermore, while numerous freely available ALS LiDAR data sources, such as the United States Geological Survey 3D Elevation Program (USGS 3DEP) and the Actueel Hoogtebestand Nederland (AHN), provide extensive resources, there is currently a few efficient method to extract data from these sources. Leveraging all available data is computationally prohibitive and often redundant. These limitations collectively hinder progress in adopting the pre-training and fine-tuning paradigm for GFM. +
+Although several largescale datasets, such as <<OpenGF, OpenGF>> and <<PureForest, PureForest>>, exist, they lack the scale and land cover diversity necessary for training versatile models. Furthermore, while numerous freely available ALS LiDAR data sources, such as the United States Geological Survey 3D Elevation Program (USGS 3DEP) and the Actueel Hoogtebestand Nederland (AHN), provide extensive resources, there is currently a few efficient method to extract data from these sources. Leveraging all available data is computationally prohibitive and often redundant. These limitations collectively hinder progress in adopting the pre-training and fine-tuning paradigm for GFM. +
 //
-With the development of methods that extract diverse data from sources such as ALS-pretraining, there is a growing need for the construction of large-scale datasets for pre-training.
+With the development of methods that extract diverse data from sources such as <<ALS-pretraining, ALS-pretraining>>, there is a growing need for the construction of large-scale datasets for pre-training.
 
 *_Clear definition of downstream tasks_* +
 Geospatial tasks span a wide range of downstream applications, including segmentation, terrain scene classification, tree species classification, and geographic question answering. However, there is no universally accepted set of tasks. +
 At present, no existing foundation model can adapt to all conceivable tasks. Every FM is designed to address a finite set of tasks. +
-Therefore, if a core set of GeoAI tasks were established, GFM developers would be able to determine which subset of tasks their resulting GFM can effectively adapt to.
+Therefore, if a core set of Geospatial tasks were established, GFM developers would be able to determine which subset of tasks their resulting GFM can effectively adapt to.
 
 *_Generalization in the multimodal domain_* +
 Geospatial information exists in various modalities within the remote sensing (RS) domain, including LiDAR, each providing different types of information. Point cloud data contain rich geospatial information, and extending GFM to incorporate point cloud modalities is therefore an important research direction. +

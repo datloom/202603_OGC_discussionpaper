@@ -29,6 +29,8 @@ _Survey of Multimodal Geospatial Foundation Models: Techniques, Applications, an
 _Foundation Models for Remote Sensing and Earth Observation: A Survey_ (2025)
 * [[[LTAE, 1]]], Vivien Sainte Fare Garnot, Loic Landrieu. 
 _Lightweight Temporal Self-Attention for Classifying Satellite Image Time Series_ (2020)
+* [[[msGFM, 1]]], Boran Han, Shuai Zhang, Xingjian Shi, Markus Reichstein. 
+_Bridging Remote Sensors with Multisensor Geospatial Foundation Models_ (2024)
 * [[[PointMamba, 1]]], Dingkang Liang, Xin Zhou, Wei Xu, Xingkui Zhu, Zhikang Zou, Xiaoqing Ye, Xiao Tan,  Xiang Bai. 
 _PointMamba: A Simple State Space Model for Point Cloud Analysis_ (2024)
 * [[[Point-DAE, 1]]], Yabin Zhang, Jiehong Lin, Ruihuang Li, Kui Jia, and Lei Zhang, Fellow, IEEE. 
@@ -55,6 +57,8 @@ _KITTI-360: A Novel Dataset and Benchmarks for Urban Scene Understanding in 2D a
 _SemanticKITTI: A Dataset for Semantic Scene Understanding of LiDAR Sequences_ (2019)
 * [[[OpenGF, 1]]], Nannan Qin, Weikai Tan, Lingfei Ma, Dedong Zhang, Jonathan Li. 
 _OpenGF: An Ultra-Large-Scale Ground Filtering Dataset Built Upon Open ALS Point Clouds Around the World_ (2021)
+* [[[PureForest, 1]]], Charles Gaydon, Floryne Roche. 
+_PureForest: A Large-Scale Aerial Lidar and Aerial Imagery Dataset for Tree Species Classification in Monospecific Forests_ (2024)
 * [[[ISOIECCD_4213, 1]]], ISO/IEC Committee Draft 4213, _Information technology -- Artificial Intelligence -- Performance measurement for AI classification, regression clustering and recommendation tasks_ (2025)
 * [[[ISO_19178-1, ISO 19178-1:2025]]]
 * [[[ISOIECIEEE_24765, ISO/IEC/IEEE 24765:2017]]]
