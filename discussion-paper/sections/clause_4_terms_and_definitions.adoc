@@ -54,4 +54,8 @@ data from the same location captured at different timeframes
 |MIM |Masked Image Modeling
 |IoU |Intersection Over Union
 |AP |Average Precision
+|MS |Multispectral
+|HS |Hyperspectral
+|DSM |Digital Surface Model
+|DAE |Denoising Autoencoders
 |===
