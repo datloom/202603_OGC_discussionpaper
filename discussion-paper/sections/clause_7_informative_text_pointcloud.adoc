@@ -43,6 +43,7 @@ At present, in models such as <<3DLST, 3DLST>>, the input unit of data handled b
 |Model name |Backborn |Format of PC |Training methods |Description
 
 |<<OpenUrban3D, OpenUrban3D>> |Transformer-based |point-based |masked geometric modeling + spatial context objectives |A region-level foundation model for large-scale urban 3D point clouds. It leverages hierarchical spatial partitioning and masked geometric modeling to learn transferable representations across extensive outdoor regions, enabling scalable adaptation to downstream tasks such as semantic segmentation, classification, and urban scene understanding.
+|<<msGFM, msGFM>> |Transformer-based |DSM |cross-sensor masked image modeling (MIM) + self-reconstruction for unpaired data |A multisensor geospatial foundation model designed to unify heterogeneous remote sensing modalities(RGB, Sentinel-2, SAR, DSM). It leverages a Swin Transformer backbone with sensor-specific embedding and decoding modules to process diverse inputs. The model employs a cross-sensor masked image modeling strategy, where masked regions from one sensor are reconstructed using information from another sensor for paired data, while standard masked reconstruction is applied to unpaired data. This enables learning of shared representations across modalities and improves generalization to downstream tasks such as scene classification, semantic segmentation, cloud removal, and pan-sharpening.
 |===
 
 *_Global-level_* +
